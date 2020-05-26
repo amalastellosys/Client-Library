@@ -6,21 +6,15 @@ export class In extends Operand {
     operand: any;
 
     constructor() {
-
         super();
-
     }
     
     inOperand(name, type) {
-
         super.abstractOperandName(name, type);
-
     }
 
     addValues(objValue: object) {
-
         this.Values.push(objValue);
-
     }
 
 }
