@@ -93,7 +93,9 @@ export class ConditionCreator {
 
                 if (objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
                     let operationObj = new Operation(OperationFlag.And);
+                    operationObj.getAnd();
                     operationObj.setIterationCount(this.count++);
+                    operationObj.toJsonString();
                     objWhere.addConditionalParam(operationObj);
                 }
             });
@@ -113,7 +115,9 @@ export class ConditionCreator {
             if (objSearchParam.multiparams.length > 0) {
 
                 let operationObj = new Operation(OperationFlag.StartParenthesis);
+                operationObj.getStartParenthesis();
                 operationObj.setIterationCount(this.count++);
+                operationObj.toJsonString();
                 objWhere.addConditionalParam(operationObj);
 
                 objSearchParam.multiparams.forEach(objParam => {
@@ -128,6 +132,7 @@ export class ConditionCreator {
                         let operation = new Operation(OperationFlag.Between);
                         operation.getBetween().betweenFromAndTo(objParam.name, objParam.fieldValueFrom, objParam.fieldValueTo, objParam.dataType);
                         operation.setIterationCount(this.count++);
+                        operation.toJsonString();
                         objWhere.addConditionalParam(operation);
 
                     }
@@ -141,6 +146,7 @@ export class ConditionCreator {
                         });
 
                         operation.setIterationCount(this.count++);
+                        operation.toJsonString();
                         objWhere.addConditionalParam(operation);
                     }
 
@@ -153,6 +159,7 @@ export class ConditionCreator {
                         });
 
                         operation.setIterationCount(this.count++);
+                        operation.toJsonString();
                         objWhere.addConditionalParam(operation);
                     }
 
@@ -162,6 +169,7 @@ export class ConditionCreator {
 
                             let operation = new Operation(OperationFlag.EqualOperation);
                             let objEqualOption: EqualOperation = (<EqualOperation>(objParam.operation));
+
                             operation.getEqualOperation().equalOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
                             operation.setIterationCount(this.count++);
                             operation.toJsonString();
@@ -187,13 +195,17 @@ export class ConditionCreator {
 
                     if (objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {
                         let operation = new Operation(OperationFlag.Or);
+                        operation.getOr();
                         operation.setIterationCount(this.count++);
+                        operation.toJsonString();
                         objWhere.addConditionalParam(operation);
                     }
                 });
 
                 let operation = new Operation(OperationFlag.CloseParenthesis);
+                operation.getCloseParenthesis();
                 operation.setIterationCount(this.count++);
+                operation.toJsonString();
                 objWhere.addConditionalParam(operation);
 
             }

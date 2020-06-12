@@ -1,6 +1,6 @@
 {
   "name": "wherecomposer",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Can log \"CustomdateTime\"  to the console!",
   "main": "index.js",
   "types": "index.d.ts",
@@ -14,5 +14,14 @@
   ],
   "dependencies": {
     "tslib": "^1.11.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amalastellosys/Client-Library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/amalastellosys/Client-Library/issues"
+  },
+  "homepage": "https://github.com/amalastellosys/Client-Library#readme"
 }

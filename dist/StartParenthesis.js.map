@@ -1,1 +1,1 @@
-{"version":3,"file":"StartParenthesis.js","sourceRoot":"","sources":["../StartParenthesis.ts"],"names":[],"mappings":";;AAAA;IAII;IAEA,CAAC;IAEL,uBAAC;AAAD,CAAC,AARD,IAQC;AARY,4CAAgB"}
+{"version":3,"file":"StartParenthesis.js","sourceRoot":"","sources":["../StartParenthesis.ts"],"names":[],"mappings":";;AAAA;IAII;QACI,IAAI,CAAC,MAAM,GAAG,IAAI,CAAC;IACvB,CAAC;IAEL,uBAAC;AAAD,CAAC,AARD,IAQC;AARY,4CAAgB"}

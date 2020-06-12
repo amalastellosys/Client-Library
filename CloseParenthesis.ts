@@ -2,7 +2,8 @@ export class CloseParenthesis {
 
     status: boolean;
 
-    constructor() {      
+    constructor() {   
+        this.status = true;   
     }
 
 }

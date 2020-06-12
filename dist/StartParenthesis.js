@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var StartParenthesis = /** @class */ (function () {
     function StartParenthesis() {
+        this.status = true;
     }
     return StartParenthesis;
 }());
