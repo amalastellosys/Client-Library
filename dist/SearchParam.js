@@ -1,14 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SearchOpEquality = exports.SearchOperationBuilder = exports.SearchOperation = exports.SearchParam = void 0;
 var EqualOperation_1 = require("./EqualOperation");
 var LikeOperation_1 = require("./LikeOperation");
 var SearchParam = /** @class */ (function () {
     function SearchParam() {
         this.name = null;
         this.dataType = null;
-        //fieldValue: string;
-        this.fieldValueFrom = null;
-        this.fieldValueTo = null;
         this.operation = null;
         this.hasMultValue = false;
         this.hasMultValueList = [];
@@ -22,7 +20,7 @@ var SearchParam = /** @class */ (function () {
     SearchParam.prototype.searchParamCreate = function (inName, inDataType, inValue1, objSearchOperation) {
         this.name = inName;
         this.dataType = inDataType;
-        this.fieldValueFrom = inValue1;
+        this.fieldValueFrom = inValue1.Month + 1;
         this.operation = objSearchOperation;
     };
     SearchParam.prototype.searchParamFrom = function (inName, inDataType, inValue1) {
@@ -31,10 +29,15 @@ var SearchParam = /** @class */ (function () {
         this.fieldValueFrom = inValue1;
     };
     SearchParam.prototype.searchParamFromTo = function (inName, inDataType, inValue1, inValue2) {
+        console.log('inValue1+++', inValue1.Month);
+        inValue1.Month = inValue1.Month + 1;
+        inValue2.Month = inValue2.Month + 1;
         this.name = inName;
         this.dataType = inDataType;
-        this.fieldValueFrom = inValue1;
-        this.fieldValueTo = inValue2;
+        if (inValue1 != undefined)
+            this.fieldValueFrom = inValue1;
+        if (inValue2 != undefined)
+            this.fieldValueTo = inValue2;
     };
     SearchParam.prototype.searchParamMultiValue = function (inName, inDataType, multiValueList) {
         this.name = inName;

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Where = void 0;
 var Where = /** @class */ (function () {
     function Where() {
         this._OperationList = [];

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ValueType = exports.Operand = void 0;
 var Operand = /** @class */ (function () {
     function Operand() {
     }

@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CustomDateTime = void 0;
 var CustomDateTime = /** @class */ (function () {
     function CustomDateTime(p_dateInput) {
-        this.year = p_dateInput.getFullYear();
-        this.month = p_dateInput.getMonth();
-        this.day = p_dateInput.getDate();
-        this.hours = p_dateInput.getHours();
-        this.minutes = p_dateInput.getMinutes();
-        this.seconds = p_dateInput.getSeconds();
-        this.milliSecond = p_dateInput.getMilliseconds();
+        this.Year = p_dateInput.getFullYear();
+        this.Month = p_dateInput.getMonth();
+        this.Day = p_dateInput.getDate();
+        this.Hour = p_dateInput.getHours();
+        this.Minute = p_dateInput.getMinutes();
+        this.Second = p_dateInput.getSeconds();
     }
     CustomDateTime.prototype.getDateobj = function () {
-        var dtdate = new Date(this.year, this.month, this.day, this.hours, this.minutes, this.seconds, this.milliSecond);
+        var dtdate = new Date(this.Year, this.Month, this.Day, this.Hour, this.Minute, this.Second);
         return dtdate;
     };
     return CustomDateTime;

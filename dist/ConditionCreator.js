@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ConditionCreator = void 0;
 var LikeOperation_1 = require("./LikeOperation");
 var EqualOperation_1 = require("./EqualOperation");
 var Where_1 = require("./Where");
@@ -11,12 +12,13 @@ var ConditionCreator = /** @class */ (function () {
     ConditionCreator.prototype.getSearchCondition = function (objSearchParamLit) {
         var _this = this;
         var objWhere = new Where_1.Where();
+        var dataTimeString = "datetime";
         if (objSearchParamLit != null) {
             objSearchParamLit.forEach(function (objParam) {
                 if (objParam.dataType == null)
                     objParam.dataType = "string";
-                if (objParam.dataType == "datetime" && objParam.fieldValueTo != null) {
-                    objParam.dataType = "string";
+                if (objParam.dataType.toLowerCase() == dataTimeString.toLowerCase() && objParam.fieldValueTo != null) {
+                    objParam.dataType = "DateTime";
                     var operation = new Operation_1.Operation(Operation_1.OperationFlag.Between);
                     operation.getBetween().betweenFromAndTo(objParam.name, objParam.fieldValueFrom, objParam.fieldValueTo, objParam.dataType);
                     operation.setIterationCount(_this.count++);

@@ -1,8 +1,8 @@
 export declare class SearchParam {
     name: string;
     dataType: string;
-    fieldValueFrom: string;
-    fieldValueTo: string;
+    fieldValueFrom: any;
+    fieldValueTo: any;
     operation: any;
     hasMultValue: boolean;
     hasMultValueList: any;

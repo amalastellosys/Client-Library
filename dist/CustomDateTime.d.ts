@@ -1,11 +1,11 @@
 export declare class CustomDateTime {
-    year: number;
-    month: number;
-    day: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-    milliSecond: number;
+    Year: number;
+    Month: number;
+    Day: number;
+    Hour: number;
+    Minute: number;
+    Second: number;
+    MilliSecond: number;
     date1: any;
     date: string;
     time: string;

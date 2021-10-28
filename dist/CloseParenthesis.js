@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CloseParenthesis = void 0;
 var CloseParenthesis = /** @class */ (function () {
     function CloseParenthesis() {
         this.status = true;

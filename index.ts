@@ -3,7 +3,7 @@ import { CustomDateTime } from "./CustomDateTime";
 import { SearchParam, SearchOperationBuilder } from "./SearchParam";
 import { ConditionCreator } from "./ConditionCreator";
 import { Where } from "./Where";
-import { DateCreator } from "./DateCreator";
+import { DateCreator, DateRange } from "./DateCreator";
 
 
 let searchParam: any = [];
@@ -35,6 +35,7 @@ dt1 = new CustomDateTime(date);
 dt3 = new CustomDateTime(date1);
 dt2 = dt1.getDateobj();
 dt4 = dt3.getDateobj();
+console.log('dt4+++', dt4);
 
 let sp1 = new SearchParam();
 let sp2 = new SearchParam();
@@ -59,6 +60,8 @@ let sp20 = new SearchParam();
 let sp21 = new SearchParam();
 let sp22 = new SearchParam();
 let sp23 = new SearchParam();
+let sp24 = new SearchParam();
+
 
 sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchOperationBuilder.create(true, false, false));
 sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport');
@@ -67,63 +70,69 @@ sp4.searchParamFrom("shmt_has_expense_payment", "string", 'true');
 sp5.searchParamCreate("shmt_id", "string", 'Dubai Airport', SearchOperationBuilder.create(true, true, false));
 let custmdateObj = new DateCreator();
 //console.log(DateCreator);
- //
+//
 // let customDateObjTo = new CustomDateTime(DateCreator.startDate);
 
-DateCreator.getDate(2);
-console.log(DateCreator.startDate);
-console.log(DateCreator.endDate);
-let obj = {
-    "year": 2020,
-    "month": 0,
-    "day": 17,
-    "hours": 0,
-    "minutes": 0,
-    "seconds": 0,
-    "milliSecond": 0
-};
-DateCreator.DateFormatter(obj);
+DateCreator.getDate(DateRange.ThisWeek);
+// console.log(DateCreator.startDate);
+// console.log(DateCreator.endDate);
+// let obj = {
+//     "year": 2020,
+//     "month": 0,
+//     "day": 17,
+//     "hours": 0,
+//     "minutes": 0,
+//     "seconds": 0,
+//     "milliSecond": 0
+// };
+// DateCreator.DateFormatter(obj);
 sp11.searchParamFromTo("This Week", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(3);
+DateCreator.getDate(DateRange.ThisMonth);
 console.log(DateCreator.startDate);
 console.log(DateCreator.endDate);
 sp12.searchParamFromTo("This Month", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(4);
+DateCreator.getDate(DateRange.ThisYear);
 console.log(DateCreator.startDate);
 console.log(DateCreator.endDate);
 sp13.searchParamFromTo("This Year", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(5);
+DateCreator.getDate(DateRange.Yesterday);
 sp14.searchParamFromTo("Yesterday", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(6);
+DateCreator.getDate(DateRange.LastWeek);
 sp15.searchParamFromTo("Last Week", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(7);
+DateCreator.getDate(DateRange.LastMonth);
 sp16.searchParamFromTo("Last Month", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(8);
+DateCreator.getDate(DateRange.LastYear);
 sp17.searchParamFromTo("Last Year", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(9);
+DateCreator.getDate(DateRange.NextWeek);
 sp18.searchParamFromTo("Next Week", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(10);
+DateCreator.getDate(DateRange.NextMonth);
 sp19.searchParamFromTo("Next Month", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(11);
+DateCreator.getDate(DateRange.NextYear);
 sp20.searchParamFromTo("Next Year", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(12);
+DateCreator.getDate(DateRange.Last7days);
 sp21.searchParamFromTo("Last7Days", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(13);
+DateCreator.getDate(DateRange.Last30Days);
 sp22.searchParamFromTo("Last30Days", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
-DateCreator.getDate(0);
+DateCreator.getDate(DateRange.Today);
 sp23.searchParamFromTo("Today", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+console.log('DateCreator.startDate+++++++++', JSON.stringify(sp23));
+
+
+
+DateCreator.getDate(DateRange.Custom);
+sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime(new Date()), new CustomDateTime(new Date()));
 
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
 // sp15.searchParamDate("This Month", "datetime", 'This Month');
@@ -151,13 +160,15 @@ sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
 
 searchParam.push(
-    sp23, sp22, sp21, sp20, sp19, sp18, sp17, sp16, sp15, sp14,sp13, sp12, sp11, sp10, sp1, sp2, sp3, sp4, sp5, sp6
+    sp23, sp22, sp21, sp20, sp19, sp18, sp17, sp16, sp15, sp14, sp13, sp12, sp11, sp10, sp1, sp2, sp3, sp4, sp5, sp6, sp24
 );
 //        
 let objCreator = new ConditionCreator();
 objWhere = objCreator.getSearchCondition(searchParam);
-//console.log('objWhere+++++++++++++', objWhere);
+
+console.log('objWhere++++++++', JSON.stringify(objWhere.toJsonString()));
 console.log('objWhere', objWhere.toJsonString());
+
 
 
 

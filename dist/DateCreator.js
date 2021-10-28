@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DateRange = exports.DateCreator = void 0;
 var CustomDateTime_1 = require("./CustomDateTime");
 var DateCreator = /** @class */ (function () {
     function DateCreator() {
@@ -104,20 +105,20 @@ var DateCreator = /** @class */ (function () {
 exports.DateCreator = DateCreator;
 var DateRange;
 (function (DateRange) {
-    DateRange[DateRange["Today"] = 1] = "Today";
-    DateRange[DateRange["ThisWeek"] = 2] = "ThisWeek";
-    DateRange[DateRange["ThisMonth"] = 3] = "ThisMonth";
-    DateRange[DateRange["ThisYear"] = 4] = "ThisYear";
-    DateRange[DateRange["Yesterday"] = 5] = "Yesterday";
-    DateRange[DateRange["LastWeek"] = 6] = "LastWeek";
-    DateRange[DateRange["LastMonth"] = 7] = "LastMonth";
-    DateRange[DateRange["LastYear"] = 8] = "LastYear";
-    DateRange[DateRange["NextWeek"] = 9] = "NextWeek";
-    DateRange[DateRange["NextMonth"] = 10] = "NextMonth";
-    DateRange[DateRange["NextYear"] = 11] = "NextYear";
-    DateRange[DateRange["Last7days"] = 12] = "Last7days";
-    DateRange[DateRange["Last30Days"] = 13] = "Last30Days";
-    DateRange[DateRange["Custom"] = 14] = "Custom";
-    DateRange[DateRange["All"] = 15] = "All";
+    DateRange["Today"] = "Today";
+    DateRange["ThisWeek"] = "ThisWeek";
+    DateRange["ThisMonth"] = "ThisMonth";
+    DateRange["ThisYear"] = "ThisYear";
+    DateRange["Yesterday"] = "Yesterday";
+    DateRange["LastWeek"] = "LastWeek";
+    DateRange["LastMonth"] = "LastMonth";
+    DateRange["LastYear"] = "LastYear";
+    DateRange["NextWeek"] = "NextWeek";
+    DateRange["NextMonth"] = "NextMonth";
+    DateRange["NextYear"] = "NextYear";
+    DateRange["Last7days"] = "Last7days";
+    DateRange["Last30Days"] = "Last30Days";
+    DateRange["Custom"] = "Custom";
+    DateRange["All"] = "All";
 })(DateRange = exports.DateRange || (exports.DateRange = {}));
 //# sourceMappingURL=DateCreator.js.map

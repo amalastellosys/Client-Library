@@ -18,6 +18,7 @@ export class ConditionCreator {
     getSearchCondition(objSearchParamLit: SearchParam[]) {
 
         let objWhere = new Where();
+        let dataTimeString = "datetime";
 
         if (objSearchParamLit != null) {
 
@@ -25,11 +26,11 @@ export class ConditionCreator {
 
                 if (objParam.dataType == null)
 
-                    objParam.dataType = "string";
+                    objParam.dataType = "String";
 
-                if (objParam.dataType == "datetime" && objParam.fieldValueTo != null) {
+                if (objParam.dataType.toLowerCase() == dataTimeString.toLowerCase() && objParam.fieldValueTo != null) {
 
-                    objParam.dataType = "string";
+                    objParam.dataType = "DateTime";
                     let operation = new Operation(OperationFlag.Between);
                     operation.getBetween().betweenFromAndTo(objParam.name, objParam.fieldValueFrom, objParam.fieldValueTo, objParam.dataType);
                     operation.setIterationCount(this.count++);
@@ -43,9 +44,9 @@ export class ConditionCreator {
                     let operation = new Operation(OperationFlag.In);
                     operation.getIn().inOperand(objParam.name, objParam.dataType);
 
-                    objParam.hasMultValueList.forEach(itemList => {
-                        operation.getIn().addValues(itemList)
-                    });
+                    // objParam.hasMultValueList.forEach(itemList => {
+                    //     operation.getIn().addValues(itemList)
+                    // });
 
                     operation.setIterationCount(this.count++);
                     operation.toJsonString();
@@ -141,9 +142,9 @@ export class ConditionCreator {
 
                         let operation = new Operation(OperationFlag.In);
                         operation.getIn().inOperand(objParam.name, objParam.dataType);
-                        objParam.hasMultValueList.forEach(itemList => {
-                            operation.getIn().addValues(itemList)
-                        });
+                        // objParam.hasMultValueList.forEach(itemList => {
+                        //     operation.getIn().addValues(itemList)
+                        // });
 
                         operation.setIterationCount(this.count++);
                         operation.toJsonString();
@@ -154,9 +155,9 @@ export class ConditionCreator {
 
                         let operation = new Operation(OperationFlag.In);
                         operation.getIn().inOperand(objParam.name, objParam.dataType);
-                        objParam.hasMultValueList.forEach(itemList => {
-                            operation.getIn().addValues(itemList)
-                        });
+                        // objParam.hasMultValueList.forEach(itemList => {
+                        //     operation.getIn().addValues(itemList)
+                        // });
 
                         operation.setIterationCount(this.count++);
                         operation.toJsonString();

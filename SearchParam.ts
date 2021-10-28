@@ -7,8 +7,8 @@ export class SearchParam {
     name: string = null;
     dataType: string = null;
     //fieldValue: string;
-    fieldValueFrom: string = null;
-    fieldValueTo: string = null;
+    fieldValueFrom: any;
+    fieldValueTo: any;
     operation: any = null;
     hasMultValue: boolean = false;
     hasMultValueList: any = [];
@@ -26,7 +26,7 @@ export class SearchParam {
     searchParamCreate(inName, inDataType, inValue1, objSearchOperation: SearchOperation) {
         this.name = inName;
         this.dataType = inDataType;
-        this.fieldValueFrom = inValue1;
+        this.fieldValueFrom = inValue1.Month + 1;
         this.operation = objSearchOperation;
     }
     searchParamFrom(inName, inDataType, inValue1) {
@@ -35,10 +35,14 @@ export class SearchParam {
         this.fieldValueFrom = inValue1;
     }
     searchParamFromTo(inName, inDataType, inValue1, inValue2) {
+        inValue1.Month = inValue1.Month + 1;
+        inValue2.Month = inValue2.Month + 1;
         this.name = inName;
         this.dataType = inDataType;
-        this.fieldValueFrom = inValue1;
-        this.fieldValueTo = inValue2;
+        if (inValue1 != undefined)
+            this.fieldValueFrom = inValue1;
+        if (inValue2 != undefined)
+            this.fieldValueTo = inValue2;
     }
     searchParamMultiValue(inName, inDataType, multiValueList) {
         this.name = inName;
@@ -110,7 +114,7 @@ export abstract class SearchOperation {
 //         this.endWith = inEndWith;
 //         this.likeMode = isLike;
 //     }
- 
+
 //     StartWith = this.startWith;
 
 //     EndWith = this.endWith;

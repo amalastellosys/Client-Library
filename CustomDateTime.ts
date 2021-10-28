@@ -1,35 +1,29 @@
 export class CustomDateTime {
 
-    year: number;
-    month: number;
-    day: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-    milliSecond: number;
+    Year: number;
+    Month: number;
+    Day: number;
+    Hour: number;
+    Minute: number;
+    Second: number;
+    MilliSecond: number;
     date1: any;
     date: string;
     time: string;
 
     constructor(p_dateInput?) {
-
-        this.year = p_dateInput.getFullYear();
-        this.month = p_dateInput.getMonth();
-        this.day = p_dateInput.getDate();
-        this.hours = p_dateInput.getHours();
-        this.minutes = p_dateInput.getMinutes();
-        this.seconds = p_dateInput.getSeconds();
-        this.milliSecond = p_dateInput.getMilliseconds();
-
+        this.Year = p_dateInput.getFullYear();
+        this.Month = p_dateInput.getMonth();
+        this.Day = p_dateInput.getDate();
+        this.Hour = p_dateInput.getHours();
+        this.Minute = p_dateInput.getMinutes();
+        this.Second = p_dateInput.getSeconds();
     }
 
     getDateobj() {
-
-        let dtdate: Date = new Date(this.year, this.month, this.day, this.hours, this.minutes, this.seconds, this.milliSecond);
+        let dtdate: Date = new Date(this.Year, this.Month, this.Day, this.Hour, this.Minute, this.Second);
         return dtdate;
-
     }
-
 }
 
 

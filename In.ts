@@ -8,9 +8,10 @@ export class In extends Operand {
     constructor() {
         super();
     }
-    
-    inOperand(name, type) {
+
+    inOperand(name, type, value?) {
         super.abstractOperandName(name, type);
+        this.Values = [...value];
     }
 
     addValues(objValue: object) {

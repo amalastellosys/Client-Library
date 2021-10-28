@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OperationFlag = exports.Operation = void 0;
 var And_1 = require("./And");
 var Between_1 = require("./Between");
 var Or_1 = require("./Or");
