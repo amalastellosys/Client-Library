@@ -20,7 +20,7 @@ var SearchParam = /** @class */ (function () {
     SearchParam.prototype.searchParamCreate = function (inName, inDataType, inValue1, objSearchOperation) {
         this.name = inName;
         this.dataType = inDataType;
-        this.fieldValueFrom = inValue1.Month + 1;
+        this.fieldValueFrom = inValue1;
         this.operation = objSearchOperation;
     };
     SearchParam.prototype.searchParamFrom = function (inName, inDataType, inValue1) {
@@ -29,7 +29,6 @@ var SearchParam = /** @class */ (function () {
         this.fieldValueFrom = inValue1;
     };
     SearchParam.prototype.searchParamFromTo = function (inName, inDataType, inValue1, inValue2) {
-        console.log('inValue1+++', inValue1.Month);
         inValue1.Month = inValue1.Month + 1;
         inValue2.Month = inValue2.Month + 1;
         this.name = inName;

@@ -76,8 +76,6 @@ DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.ThisWeek);
 // DateCreator.DateFormatter(obj);
 sp11.searchParamFromTo("This Week", "datetime", new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.startDate), new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.endDate));
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.ThisMonth);
-console.log(DateCreator_1.DateCreator.startDate);
-console.log(DateCreator_1.DateCreator.endDate);
 sp12.searchParamFromTo("This Month", "datetime", new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.startDate), new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.endDate));
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.ThisYear);
 console.log(DateCreator_1.DateCreator.startDate);
@@ -103,7 +101,6 @@ DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Last30Days);
 sp22.searchParamFromTo("Last30Days", "datetime", new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.startDate), new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.endDate));
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Today);
 sp23.searchParamFromTo("Today", "datetime", new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.startDate), new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.endDate));
-console.log('DateCreator.startDate+++++++++', JSON.stringify(sp23));
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Custom);
 sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime_1.CustomDateTime(new Date()), new CustomDateTime_1.CustomDateTime(new Date()));
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
@@ -117,6 +114,7 @@ sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime_1.CustomDateTime
 // sp22.searchParamDate("Today", "datetime", 'Last 7 Days');
 // sp23.searchParamDate("Yesterday", "datetime", 'Last 30 Days');
 sp6.name = "ssta_id";
+sp6.dataType = "string";
 checkedItems.forEach(function (objItem) {
     sp6.hasMultValueList.push(objItem);
     sp6.hasMultValue = true;
@@ -127,11 +125,10 @@ sp9.searchParamFrom('Shmt_Has_Unpaid_Invc_Dest', "string", "Shipment has Unpaid 
 searchMultiParam.push(sp7, sp8, sp9);
 sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
-searchParam.push(sp23, sp22, sp21, sp20, sp19, sp18, sp17, sp16, sp15, sp14, sp13, sp12, sp11, sp10, sp1, sp2, sp3, sp4, sp5, sp6, sp24);
+searchParam.push(sp23, sp22, sp21, sp20, sp19, sp18, sp17, sp16, sp15, sp14, sp13, sp12, sp11, sp1, sp2, sp3, sp4, sp5, sp6, sp24);
 //        
 var objCreator = new ConditionCreator_1.ConditionCreator();
 objWhere = objCreator.getSearchCondition(searchParam);
 console.log('objWhere++++++++', JSON.stringify(objWhere.toJsonString()));
-//console.log('objWhere+++++++++++++', objWhere);
 console.log('objWhere', objWhere.toJsonString());
 //# sourceMappingURL=index.js.map

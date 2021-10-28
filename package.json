@@ -1,13 +1,13 @@
 {
   "name": "wherecomposer",
-  "version": "2.0.0",
+  "version": "3.0.1",
   "description": "Can log \"CustomdateTime\"  to the console!",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Amala",
   "license": "ISC",
   "files": [
     "dist/**/*"

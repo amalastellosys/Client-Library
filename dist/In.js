@@ -14,6 +14,11 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.In = void 0;
 var Operand_1 = require("./Operand");
@@ -24,8 +29,9 @@ var In = /** @class */ (function (_super) {
         _this.Values = [];
         return _this;
     }
-    In.prototype.inOperand = function (name, type) {
+    In.prototype.inOperand = function (name, type, value) {
         _super.prototype.abstractOperandName.call(this, name, type);
+        this.Values = __spreadArray([], value);
     };
     In.prototype.addValues = function (objValue) {
         this.Values.push(objValue);

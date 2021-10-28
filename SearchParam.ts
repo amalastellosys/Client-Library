@@ -26,7 +26,7 @@ export class SearchParam {
     searchParamCreate(inName, inDataType, inValue1, objSearchOperation: SearchOperation) {
         this.name = inName;
         this.dataType = inDataType;
-        this.fieldValueFrom = inValue1.Month + 1;
+        this.fieldValueFrom = inValue1;
         this.operation = objSearchOperation;
     }
     searchParamFrom(inName, inDataType, inValue1) {

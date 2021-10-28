@@ -89,8 +89,6 @@ DateCreator.getDate(DateRange.ThisWeek);
 sp11.searchParamFromTo("This Week", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
 DateCreator.getDate(DateRange.ThisMonth);
-console.log(DateCreator.startDate);
-console.log(DateCreator.endDate);
 sp12.searchParamFromTo("This Month", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
 
 DateCreator.getDate(DateRange.ThisYear);
@@ -127,8 +125,6 @@ sp22.searchParamFromTo("Last30Days", "datetime", new CustomDateTime(DateCreator.
 
 DateCreator.getDate(DateRange.Today);
 sp23.searchParamFromTo("Today", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
-console.log('DateCreator.startDate+++++++++', JSON.stringify(sp23));
-
 
 
 DateCreator.getDate(DateRange.Custom);
@@ -146,6 +142,7 @@ sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime(new Date()), new
 // sp23.searchParamDate("Yesterday", "datetime", 'Last 30 Days');
 
 sp6.name = "ssta_id"
+sp6.dataType = "string"
 checkedItems.forEach(objItem => {
     sp6.hasMultValueList.push(objItem);
     sp6.hasMultValue = true;
@@ -160,12 +157,11 @@ sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
 
 searchParam.push(
-    sp23, sp22, sp21, sp20, sp19, sp18, sp17, sp16, sp15, sp14, sp13, sp12, sp11, sp10, sp1, sp2, sp3, sp4, sp5, sp6, sp24
+    sp23, sp22, sp21, sp20, sp19, sp18, sp17, sp16, sp15, sp14, sp13, sp12, sp11, sp1, sp2, sp3, sp4, sp5, sp6, sp24
 );
 //        
 let objCreator = new ConditionCreator();
 objWhere = objCreator.getSearchCondition(searchParam);
-
 console.log('objWhere++++++++', JSON.stringify(objWhere.toJsonString()));
 console.log('objWhere', objWhere.toJsonString());
 

@@ -16,7 +16,7 @@ var ConditionCreator = /** @class */ (function () {
         if (objSearchParamLit != null) {
             objSearchParamLit.forEach(function (objParam) {
                 if (objParam.dataType == null)
-                    objParam.dataType = "string";
+                    objParam.dataType = "String";
                 if (objParam.dataType.toLowerCase() == dataTimeString.toLowerCase() && objParam.fieldValueTo != null) {
                     objParam.dataType = "DateTime";
                     var operation = new Operation_1.Operation(Operation_1.OperationFlag.Between);
@@ -27,7 +27,7 @@ var ConditionCreator = /** @class */ (function () {
                 }
                 else if (objParam.hasMultValue) {
                     var operation_1 = new Operation_1.Operation(Operation_1.OperationFlag.In);
-                    operation_1.getIn().inOperand(objParam.name, objParam.dataType);
+                    operation_1.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
                     objParam.hasMultValueList.forEach(function (itemList) {
                         operation_1.getIn().addValues(itemList);
                     });
@@ -62,7 +62,7 @@ var ConditionCreator = /** @class */ (function () {
                         objWhere.addConditionalParam(operation);
                     }
                 }
-                if (objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
+                if (objSearchParamLit != undefined && objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
                     var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.And);
                     operationObj.getAnd();
                     operationObj.setIterationCount(_this.count++);
@@ -76,8 +76,9 @@ var ConditionCreator = /** @class */ (function () {
     ConditionCreator.prototype.getMultiParamCondition = function (objSearchParam) {
         var _this = this;
         var objWhere = new Where_1.Where();
+        var dataTimeString = "datetime";
         if (objSearchParam.hasMultiParam) {
-            if (objSearchParam.multiparams.length > 0) {
+            if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0) {
                 var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.StartParenthesis);
                 operationObj.getStartParenthesis();
                 operationObj.setIterationCount(this.count++);
@@ -87,8 +88,8 @@ var ConditionCreator = /** @class */ (function () {
                     if (objParam.dataType == null) {
                         objParam.dataType = "string";
                     }
-                    if (objParam.dataType == "datetime" && (objParam.fieldValueTo != null)) {
-                        objParam.dataType = "string";
+                    if (objParam.dataType.toLowerCase() == dataTimeString.toLowerCase() && (objParam.fieldValueTo != null)) {
+                        objParam.dataType = "DateTime";
                         var operation_2 = new Operation_1.Operation(Operation_1.OperationFlag.Between);
                         operation_2.getBetween().betweenFromAndTo(objParam.name, objParam.fieldValueFrom, objParam.fieldValueTo, objParam.dataType);
                         operation_2.setIterationCount(_this.count++);
@@ -97,7 +98,7 @@ var ConditionCreator = /** @class */ (function () {
                     }
                     else if (objParam.hasMultValue) {
                         var operation_3 = new Operation_1.Operation(Operation_1.OperationFlag.In);
-                        operation_3.getIn().inOperand(objParam.name, objParam.dataType);
+                        operation_3.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
                         objParam.hasMultValueList.forEach(function (itemList) {
                             operation_3.getIn().addValues(itemList);
                         });
@@ -107,7 +108,7 @@ var ConditionCreator = /** @class */ (function () {
                     }
                     else if (objParam.hasMultiParams) {
                         var operation_4 = new Operation_1.Operation(Operation_1.OperationFlag.In);
-                        operation_4.getIn().inOperand(objParam.name, objParam.dataType);
+                        operation_4.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
                         objParam.hasMultValueList.forEach(function (itemList) {
                             operation_4.getIn().addValues(itemList);
                         });
@@ -136,7 +137,7 @@ var ConditionCreator = /** @class */ (function () {
                             objWhere.addConditionalParam(operation_6);
                         }
                     }
-                    if (objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {
+                    if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0 && objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {
                         var operation_7 = new Operation_1.Operation(Operation_1.OperationFlag.Or);
                         operation_7.getOr();
                         operation_7.setIterationCount(_this.count++);
