@@ -2,7 +2,7 @@ import { Operand } from "./Operand";
 
 export class In extends Operand {
 
-    private Values: any = [];
+    private Values: any[] = [];
     operand: any;
 
     constructor() {

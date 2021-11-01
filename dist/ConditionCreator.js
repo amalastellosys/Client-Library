@@ -26,14 +26,15 @@ var ConditionCreator = /** @class */ (function () {
                     objWhere.addConditionalParam(operation);
                 }
                 else if (objParam.hasMultValue) {
-                    var operation_1 = new Operation_1.Operation(Operation_1.OperationFlag.In);
-                    operation_1.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
-                    objParam.hasMultValueList.forEach(function (itemList) {
-                        operation_1.getIn().addValues(itemList);
-                    });
-                    operation_1.setIterationCount(_this.count++);
-                    operation_1.toJsonString();
-                    objWhere.addConditionalParam(operation_1);
+                    var operation = new Operation_1.Operation(Operation_1.OperationFlag.In);
+                    operation.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
+                    // objParam.hasMultValueList.forEach(itemList => {
+                    //     operation.getIn().addValues(itemList)
+                    // });
+                    console.log('operation', operation);
+                    operation.setIterationCount(_this.count++);
+                    operation.toJsonString();
+                    objWhere.addConditionalParam(operation);
                 }
                 else if (objParam.hasMultiParam) {
                     _this.getMultiParamCondition(objParam)._OperationList.forEach(function (operatorList) {
@@ -90,59 +91,59 @@ var ConditionCreator = /** @class */ (function () {
                     }
                     if (objParam.dataType.toLowerCase() == dataTimeString.toLowerCase() && (objParam.fieldValueTo != null)) {
                         objParam.dataType = "DateTime";
-                        var operation_2 = new Operation_1.Operation(Operation_1.OperationFlag.Between);
-                        operation_2.getBetween().betweenFromAndTo(objParam.name, objParam.fieldValueFrom, objParam.fieldValueTo, objParam.dataType);
+                        var operation_1 = new Operation_1.Operation(Operation_1.OperationFlag.Between);
+                        operation_1.getBetween().betweenFromAndTo(objParam.name, objParam.fieldValueFrom, objParam.fieldValueTo, objParam.dataType);
+                        operation_1.setIterationCount(_this.count++);
+                        operation_1.toJsonString();
+                        objWhere.addConditionalParam(operation_1);
+                    }
+                    else if (objParam.hasMultValue) {
+                        var operation_2 = new Operation_1.Operation(Operation_1.OperationFlag.In);
+                        operation_2.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
+                        // objParam.hasMultValueList.forEach(itemList => {
+                        //     operation.getIn().addValues(itemList)
+                        // });
                         operation_2.setIterationCount(_this.count++);
                         operation_2.toJsonString();
                         objWhere.addConditionalParam(operation_2);
                     }
-                    else if (objParam.hasMultValue) {
+                    else if (objParam.hasMultiParams) {
                         var operation_3 = new Operation_1.Operation(Operation_1.OperationFlag.In);
                         operation_3.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
-                        objParam.hasMultValueList.forEach(function (itemList) {
-                            operation_3.getIn().addValues(itemList);
-                        });
+                        // objParam.hasMultValueList.forEach(itemList => {
+                        //     operation.getIn().addValues(itemList)
+                        // });
                         operation_3.setIterationCount(_this.count++);
                         operation_3.toJsonString();
                         objWhere.addConditionalParam(operation_3);
                     }
-                    else if (objParam.hasMultiParams) {
-                        var operation_4 = new Operation_1.Operation(Operation_1.OperationFlag.In);
-                        operation_4.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
-                        objParam.hasMultValueList.forEach(function (itemList) {
-                            operation_4.getIn().addValues(itemList);
-                        });
-                        operation_4.setIterationCount(_this.count++);
-                        operation_4.toJsonString();
-                        objWhere.addConditionalParam(operation_4);
-                    }
                     else {
                         if (objSearchParam.operation instanceof EqualOperation_1.EqualOperation) {
-                            var operation_5 = new Operation_1.Operation(Operation_1.OperationFlag.EqualOperation);
+                            var operation_4 = new Operation_1.Operation(Operation_1.OperationFlag.EqualOperation);
                             var objEqualOption = (objParam.operation);
-                            operation_5.getEqualOperation().equalOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                            operation_4.getEqualOperation().equalOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                            operation_4.setIterationCount(_this.count++);
+                            operation_4.toJsonString();
+                            objWhere.addConditionalParam(operation_4);
+                        }
+                        else if (objSearchParam.operation instanceof LikeOperation_1.LikeOperation) {
+                            var operation_5 = new Operation_1.Operation(Operation_1.OperationFlag.LikeOperation);
+                            var objLikeOption = (objParam.operation);
+                            operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
+                            if (!operation_5.getLikeOperation().likeMode) {
+                                operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
+                            }
                             operation_5.setIterationCount(_this.count++);
                             operation_5.toJsonString();
                             objWhere.addConditionalParam(operation_5);
                         }
-                        else if (objSearchParam.operation instanceof LikeOperation_1.LikeOperation) {
-                            var operation_6 = new Operation_1.Operation(Operation_1.OperationFlag.LikeOperation);
-                            var objLikeOption = (objParam.operation);
-                            operation_6.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
-                            if (!operation_6.getLikeOperation().likeMode) {
-                                operation_6.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
-                            }
-                            operation_6.setIterationCount(_this.count++);
-                            operation_6.toJsonString();
-                            objWhere.addConditionalParam(operation_6);
-                        }
                     }
                     if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0 && objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {
-                        var operation_7 = new Operation_1.Operation(Operation_1.OperationFlag.Or);
-                        operation_7.getOr();
-                        operation_7.setIterationCount(_this.count++);
-                        operation_7.toJsonString();
-                        objWhere.addConditionalParam(operation_7);
+                        var operation_6 = new Operation_1.Operation(Operation_1.OperationFlag.Or);
+                        operation_6.getOr();
+                        operation_6.setIterationCount(_this.count++);
+                        operation_6.toJsonString();
+                        objWhere.addConditionalParam(operation_6);
                     }
                 });
                 var operation = new Operation_1.Operation(Operation_1.OperationFlag.CloseParenthesis);

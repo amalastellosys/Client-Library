@@ -40,13 +40,13 @@ export class ConditionCreator {
                     let operation = new Operation(OperationFlag.In);
                     operation.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
 
-                    objParam.hasMultValueList.forEach(itemList => {
-                        operation.getIn().addValues(itemList)
-                    });
-
+                    // objParam.hasMultValueList.forEach(itemList => {
+                    //     operation.getIn().addValues(itemList)
+                    // });
                     operation.setIterationCount(this.count++);
                     operation.toJsonString();
                     objWhere.addConditionalParam(operation);
+                    
 
                 }
                 else if (objParam.hasMultiParam) {
@@ -128,12 +128,12 @@ export class ConditionCreator {
 
                         let operation = new Operation(OperationFlag.In);
                         operation.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
-                        objParam.hasMultValueList.forEach(itemList => {
-                            operation.getIn().addValues(itemList)
-                        });
+                        // objParam.hasMultValueList.forEach(itemList => {
+                        //     operation.getIn().addValues(itemList)
+                        // });
 
                         operation.setIterationCount(this.count++);
-                        operation.toJsonString();
+                        operation.toJsonString();                    
                         objWhere.addConditionalParam(operation);
                     }
 
@@ -141,13 +141,14 @@ export class ConditionCreator {
 
                         let operation = new Operation(OperationFlag.In);
                         operation.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
-                        objParam.hasMultValueList.forEach(itemList => {
-                            operation.getIn().addValues(itemList)
-                        });
+                        // objParam.hasMultValueList.forEach(itemList => {
+                        //     operation.getIn().addValues(itemList)
+                        // });
 
                         operation.setIterationCount(this.count++);
                         operation.toJsonString();
                         objWhere.addConditionalParam(operation);
+
                     }
 
                     else {

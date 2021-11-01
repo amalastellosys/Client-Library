@@ -21,7 +21,9 @@ var checkedItems = ['By Sea', 'By Land', 'By Foot'];
 //dt1 = new CustomDateTime('27/3/2012 04:37:20', CustomDateTime.FORMAT1);
 //dt2 = new CustomDateTime('01/02/2019 04:37:20', CustomDateTime.FORMAT2);
 var date = new Date(2017, 4, 4, 17, 23, 42, 11);
-var date1 = new Date(2018, 12, 3, 17, 23, 42, 11);
+var date1 = new Date('Wed Oct 20 2021 05:30:00 GMT+0530 (IST)');
+// let date1 = 'Thu May 04 2017 17:23:42 GMT+0530 (India Standard Time)'
+console.log('date1', date);
 console.log('date1', date1);
 dt1 = new CustomDateTime_1.CustomDateTime(date);
 dt3 = new CustomDateTime_1.CustomDateTime(date1);
@@ -101,8 +103,9 @@ DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Last30Days);
 sp22.searchParamFromTo("Last30Days", "datetime", new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.startDate), new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.endDate));
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Today);
 sp23.searchParamFromTo("Today", "datetime", new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.startDate), new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.endDate));
+console.log('date1', date1);
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Custom);
-sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime_1.CustomDateTime(new Date()), new CustomDateTime_1.CustomDateTime(new Date()));
+sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime_1.CustomDateTime(new Date()), new CustomDateTime_1.CustomDateTime(date1));
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
 // sp15.searchParamDate("This Month", "datetime", 'This Month');
 // sp16.searchParamDate("This Year", "datetime", 'This Year');
@@ -114,18 +117,20 @@ sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime_1.CustomDateTime
 // sp22.searchParamDate("Today", "datetime", 'Last 7 Days');
 // sp23.searchParamDate("Yesterday", "datetime", 'Last 30 Days');
 sp6.name = "ssta_id";
-sp6.dataType = "string";
+sp6.dataType = "Int";
 checkedItems.forEach(function (objItem) {
     sp6.hasMultValueList.push(objItem);
     sp6.hasMultValue = true;
 });
+console.log('checkedItems', checkedItems);
+console.log('sp6', sp6);
 sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination");
 sp8.searchParamFrom('Shmt_Has_Chrg_at_Src', "string", "Shipment has Charge at Source");
 sp9.searchParamFrom('Shmt_Has_Unpaid_Invc_Dest', "string", "Shipment has Unpaid invoice at Destination");
 searchMultiParam.push(sp7, sp8, sp9);
 sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
-searchParam.push(sp23, sp22, sp21, sp20, sp19, sp18, sp17, sp16, sp15, sp14, sp13, sp12, sp11, sp1, sp2, sp3, sp4, sp5, sp6, sp24);
+searchParam.push(sp6);
 //        
 var objCreator = new ConditionCreator_1.ConditionCreator();
 objWhere = objCreator.getSearchCondition(searchParam);
