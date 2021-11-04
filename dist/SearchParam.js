@@ -23,6 +23,26 @@ var SearchParam = /** @class */ (function () {
         this.fieldValueFrom = inValue1;
         this.operation = objSearchOperation;
     };
+    
+    SearchParam.prototype.searchParamCreator = function (inName, inDataType, inValue1, objSearchOperation) {
+        var firstChar = inValue1.charAt(0);
+        var lastChar = inValue1.substr(inValue1.length - 1);
+        var bLikeStart = false;
+        var bLikeEnd = false;
+        var searchedString = inValue1;
+        if (firstChar == "*") {
+            searchedString = searchedString.substring(1);
+            bLikeStart = true;
+        }
+        if (lastChar == "*") {
+            searchedString = searchedString.substring(0, searchedString.length - 1);
+            bLikeEnd = true;
+        }
+        this.name = inName;
+        this.dataType = inDataType;
+        this.fieldValueFrom = inValue1;
+        this.searchParamCreate(inName, inDataType, searchedString, SearchOperationBuilder.create(true, bLikeStart, bLikeEnd));
+    };
     SearchParam.prototype.searchParamFrom = function (inName, inDataType, inValue1) {
         this.name = inName;
         this.dataType = inDataType;

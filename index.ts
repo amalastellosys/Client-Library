@@ -62,13 +62,16 @@ let sp21 = new SearchParam();
 let sp22 = new SearchParam();
 let sp23 = new SearchParam();
 let sp24 = new SearchParam();
-
+let sp100 = new SearchParam();
 
 sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchOperationBuilder.create(true, false, false));
 sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport');
 sp3.searchParamFromTo("shmt_has_income_payment", "datetime", dt1.getDateobj(), dt3.getDateobj());
 sp4.searchParamFrom("shmt_has_expense_payment", "string", 'true');
 sp5.searchParamCreate("shmt_id", "string", 'Dubai Airport', SearchOperationBuilder.create(true, true, false));
+sp100.searchParamCreator("shmt_id", "string", 'Dubai Airport');
+
+console.log('sp100sp100',sp100);
 let custmdateObj = new DateCreator();
 //console.log(DateCreator);
 //
@@ -159,10 +162,12 @@ sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
 
 searchParam.push(
-    sp6,sp5
+    sp6,sp5,sp100
 );
 //        
 let objCreator = new ConditionCreator();
+
+console.log('searchParam', searchParam);
 
 objWhere = objCreator.getSearchCondition(searchParam);
 console.log('objWhere++++++++', JSON.stringify(objWhere.toJsonString()));
