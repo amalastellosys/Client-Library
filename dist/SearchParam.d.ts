@@ -10,6 +10,7 @@ export declare class SearchParam {
     multiparams: any[];
     constructor();
     searchParamCreate(inName: any, inDataType: any, inValue1: any, objSearchOperation: SearchOperation): void;
+    searchParamCreator(inName: any, inDataType: any, inValue1: any): void;
     searchParamFrom(inName: any, inDataType: any, inValue1: any): void;
     searchParamFromTo(inName: any, inDataType: any, inValue1: any, inValue2: any): void;
     searchParamMultiValue(inName: any, inDataType: any, multiValueList: any): void;
