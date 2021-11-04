@@ -29,7 +29,7 @@ export class Operand {
 
         this.Name = inName;
         this.Value = value;
-        this.Type = "System.String";
+        this.Type = "String";
     }
 
 }

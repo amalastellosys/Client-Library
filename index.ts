@@ -159,7 +159,7 @@ sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
 
 searchParam.push(
-    sp6
+    sp6,sp5
 );
 //        
 let objCreator = new ConditionCreator();

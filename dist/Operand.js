@@ -16,7 +16,7 @@ var Operand = /** @class */ (function () {
     Operand.prototype.abstractOperandObjLike = function (inName, value) {
         this.Name = inName;
         this.Value = value;
-        this.Type = "System.String";
+        this.Type = "String";
     };
     return Operand;
 }());
