@@ -53,10 +53,10 @@ var ConditionCreator = /** @class */ (function () {
                     else if (objParam.operation instanceof LikeOperation_1.LikeOperation) {
                         var operation = new Operation_1.Operation(Operation_1.OperationFlag.LikeOperation);
                         var objLikeOption = (objParam.operation);
-                        operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
+                        operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
                         var objLikeOperation = operation.getLikeOperation();
                         if (!operation.getLikeOperation().likeMode) {
-                            operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
+                            operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
                         }
                         operation.setIterationCount(_this.count++);
                         operation.toJsonString();
@@ -129,9 +129,9 @@ var ConditionCreator = /** @class */ (function () {
                         else if (objSearchParam.operation instanceof LikeOperation_1.LikeOperation) {
                             var operation_5 = new Operation_1.Operation(Operation_1.OperationFlag.LikeOperation);
                             var objLikeOption = (objParam.operation);
-                            operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
+                            operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
                             if (!operation_5.getLikeOperation().likeMode) {
-                                operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
+                                operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
                             }
                             operation_5.setIterationCount(_this.count++);
                             operation_5.toJsonString();

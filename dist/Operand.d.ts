@@ -7,7 +7,7 @@ export declare class Operand {
     constructor();
     abstractOperandName(inName: any, type?: any): void;
     abstractOperandType(inName: any, value: any, type: any): void;
-    abstractOperandObjLike(inName: any, value: any): void;
+    abstractOperandObjLike(inName: any, value: any, type: any): void;
 }
 export declare enum ValueType {
     NULL = 0

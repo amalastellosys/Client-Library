@@ -46,7 +46,7 @@ export class ConditionCreator {
                     operation.setIterationCount(this.count++);
                     operation.toJsonString();
                     objWhere.addConditionalParam(operation);
-                    
+
 
                 }
                 else if (objParam.hasMultiParam) {
@@ -67,11 +67,11 @@ export class ConditionCreator {
                     else if (objParam.operation instanceof LikeOperation) {
                         let operation = new Operation(OperationFlag.LikeOperation);
                         let objLikeOption: LikeOperation = (<LikeOperation>(objParam.operation));
-                        operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
+                        operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
                         let objLikeOperation = operation.getLikeOperation();
 
                         if (!operation.getLikeOperation().likeMode) {
-                            operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
+                            operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
                         }
                         operation.setIterationCount(this.count++);
                         operation.toJsonString();
@@ -133,7 +133,7 @@ export class ConditionCreator {
                         // });
 
                         operation.setIterationCount(this.count++);
-                        operation.toJsonString();                    
+                        operation.toJsonString();
                         objWhere.addConditionalParam(operation);
                     }
 
@@ -169,10 +169,10 @@ export class ConditionCreator {
 
                             let operation = new Operation(OperationFlag.LikeOperation);
                             let objLikeOption: LikeOperation = (<LikeOperation>(objParam.operation));
-                            operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
+                            operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
 
                             if (!operation.getLikeOperation().likeMode) {
-                                operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom);
+                                operation.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
                             }
 
                             operation.setIterationCount(this.count++);

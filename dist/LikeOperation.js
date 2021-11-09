@@ -26,8 +26,8 @@ var LikeOperation = /** @class */ (function (_super) {
         // this.endWith = true;
     }
     // likeOperation(objLikeMode: LikeMode, startWith, endWith, name, value, ) {
-    LikeOperation.prototype.likeOperation = function (name, value) {
-        _super.prototype.abstractOperandObjLike.call(this, name, value);
+    LikeOperation.prototype.likeOperation = function (name, value, type) {
+        _super.prototype.abstractOperandObjLike.call(this, name, value, type);
         // this.likeMode = objLikeMode;
         // this.startWith = startWith;
         // this.endWith = endWith;

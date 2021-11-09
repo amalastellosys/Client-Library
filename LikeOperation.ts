@@ -17,9 +17,9 @@ export class LikeOperation extends Operand {
     }
 
     // likeOperation(objLikeMode: LikeMode, startWith, endWith, name, value, ) {
-        
-    likeOperation( name, value, ) {
-        super.abstractOperandObjLike(name, value);
+
+    likeOperation(name, value, type) {
+        super.abstractOperandObjLike(name, value, type);
         // this.likeMode = objLikeMode;
         // this.startWith = startWith;
         // this.endWith = endWith;

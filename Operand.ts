@@ -25,11 +25,11 @@ export class Operand {
         this.Value = value;
     }
 
-    abstractOperandObjLike(inName, value) {
+    abstractOperandObjLike(inName, value, type) {
 
         this.Name = inName;
         this.Value = value;
-        this.Type = "String";
+        this.Type = type;
     }
 
 }

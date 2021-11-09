@@ -68,8 +68,8 @@ sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchOperati
 sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport');
 sp3.searchParamFromTo("shmt_has_income_payment", "datetime", dt1.getDateobj(), dt3.getDateobj());
 sp4.searchParamFrom("shmt_has_expense_payment", "string", 'true');
-// sp5.searchParamCreate("shmt_id", "string", 'Dubai Airport', SearchOperationBuilder.create(true, true, false));
-sp100.searchParamCreator("shmt_id", "string", 'Dubai Airport');
+sp100.searchParamCreate("shmt_id", "Int", 'Dubai Airport', SearchOperationBuilder.create(true, true, false));
+// sp100.searchParamCreator("shmt_id", "Int", 'Dubai Airport');
 
 console.log('sp100sp100',sp100);
 let custmdateObj = new DateCreator();

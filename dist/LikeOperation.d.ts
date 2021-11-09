@@ -5,7 +5,7 @@ export declare class LikeOperation extends Operand {
     endWith: boolean;
     LikeMode: boolean;
     constructor(isLike?: boolean, startWith?: any, endWith?: any);
-    likeOperation(name: any, value: any): void;
+    likeOperation(name: any, value: any, type: any): void;
 }
 export declare enum LikeMode {
     Like = 0,

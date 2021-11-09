@@ -13,10 +13,10 @@ var Operand = /** @class */ (function () {
         this.Type = type;
         this.Value = value;
     };
-    Operand.prototype.abstractOperandObjLike = function (inName, value) {
+    Operand.prototype.abstractOperandObjLike = function (inName, value, type) {
         this.Name = inName;
         this.Value = value;
-        this.Type = "String";
+        this.Type = type;
     };
     return Operand;
 }());
