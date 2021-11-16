@@ -62,26 +62,28 @@ var ConditionCreator = /** @class */ (function () {
                         objWhere.addConditionalParam(operation);
                     }
                 }
-                if (objParam.isAndOperator) {
-                    var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.And);
-                    operationObj.getAnd();
-                    operationObj.setIterationCount(_this.count++);
-                    operationObj.toJsonString();
-                    objWhere.addConditionalParam(operationObj);
-                }
-                else if (objParam.isAndOperator == false) {
-                    var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.Or);
-                    operationObj.getOr();
-                    operationObj.setIterationCount(_this.count++);
-                    operationObj.toJsonString();
-                    objWhere.addConditionalParam(operationObj);
-                }
-                else {
-                    var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.And);
-                    operationObj.getAnd();
-                    operationObj.setIterationCount(_this.count++);
-                    operationObj.toJsonString();
-                    objWhere.addConditionalParam(operationObj);
+                if (objSearchParamLit != undefined && objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
+                    if (objParam.isAndOperator) {
+                        var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.And);
+                        operationObj.getAnd();
+                        operationObj.setIterationCount(_this.count++);
+                        operationObj.toJsonString();
+                        objWhere.addConditionalParam(operationObj);
+                    }
+                    else if (objParam.isAndOperator == false) {
+                        var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.Or);
+                        operationObj.getOr();
+                        operationObj.setIterationCount(_this.count++);
+                        operationObj.toJsonString();
+                        objWhere.addConditionalParam(operationObj);
+                    }
+                    else {
+                        var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.And);
+                        operationObj.getAnd();
+                        operationObj.setIterationCount(_this.count++);
+                        operationObj.toJsonString();
+                        objWhere.addConditionalParam(operationObj);
+                    }
                 }
                 // if (objSearchParamLit != undefined && objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
                 //     let operationObj = new Operation(OperationFlag.And);
@@ -165,19 +167,21 @@ var ConditionCreator = /** @class */ (function () {
                     //     operation.toJsonString();
                     //     objWhere.addConditionalParam(operation);
                     // }
-                    if (objParam.isAndOperator) {
-                        var operationObj_1 = new Operation_1.Operation(Operation_1.OperationFlag.And);
-                        operationObj_1.getAnd();
-                        operationObj_1.setIterationCount(_this.count++);
-                        operationObj_1.toJsonString();
-                        objWhere.addConditionalParam(operationObj_1);
-                    }
-                    else {
-                        var operationObj_2 = new Operation_1.Operation(Operation_1.OperationFlag.Or);
-                        operationObj_2.getOr();
-                        operationObj_2.setIterationCount(_this.count++);
-                        operationObj_2.toJsonString();
-                        objWhere.addConditionalParam(operationObj_2);
+                    if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0 && objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {
+                        if (objParam.isAndOperator) {
+                            var operationObj_1 = new Operation_1.Operation(Operation_1.OperationFlag.And);
+                            operationObj_1.getAnd();
+                            operationObj_1.setIterationCount(_this.count++);
+                            operationObj_1.toJsonString();
+                            objWhere.addConditionalParam(operationObj_1);
+                        }
+                        else {
+                            var operationObj_2 = new Operation_1.Operation(Operation_1.OperationFlag.Or);
+                            operationObj_2.getOr();
+                            operationObj_2.setIterationCount(_this.count++);
+                            operationObj_2.toJsonString();
+                            objWhere.addConditionalParam(operationObj_2);
+                        }
                     }
                 });
                 var operation = new Operation_1.Operation(Operation_1.OperationFlag.CloseParenthesis);

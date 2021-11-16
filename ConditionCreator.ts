@@ -79,26 +79,28 @@ export class ConditionCreator {
                     }
                 }
 
-                if (objParam.isAndOperator) {
-                    let operationObj = new Operation(OperationFlag.And);
-                    operationObj.getAnd();
-                    operationObj.setIterationCount(this.count++);
-                    operationObj.toJsonString();
-                    objWhere.addConditionalParam(operationObj);
-                }
-                else if (objParam.isAndOperator == false) {
-                    let operationObj = new Operation(OperationFlag.Or);
-                    operationObj.getOr();
-                    operationObj.setIterationCount(this.count++);
-                    operationObj.toJsonString();
-                    objWhere.addConditionalParam(operationObj);
-                }
-                else {
-                    let operationObj = new Operation(OperationFlag.And);
-                    operationObj.getAnd();
-                    operationObj.setIterationCount(this.count++);
-                    operationObj.toJsonString();
-                    objWhere.addConditionalParam(operationObj);
+                if (objSearchParamLit != undefined && objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
+                    if (objParam.isAndOperator) {
+                        let operationObj = new Operation(OperationFlag.And);
+                        operationObj.getAnd();
+                        operationObj.setIterationCount(this.count++);
+                        operationObj.toJsonString();
+                        objWhere.addConditionalParam(operationObj);
+                    }
+                    else if (objParam.isAndOperator == false) {
+                        let operationObj = new Operation(OperationFlag.Or);
+                        operationObj.getOr();
+                        operationObj.setIterationCount(this.count++);
+                        operationObj.toJsonString();
+                        objWhere.addConditionalParam(operationObj);
+                    }
+                    else {
+                        let operationObj = new Operation(OperationFlag.And);
+                        operationObj.getAnd();
+                        operationObj.setIterationCount(this.count++);
+                        operationObj.toJsonString();
+                        objWhere.addConditionalParam(operationObj);
+                    }
                 }
 
                 // if (objSearchParamLit != undefined && objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
@@ -210,19 +212,22 @@ export class ConditionCreator {
                     //     operation.toJsonString();
                     //     objWhere.addConditionalParam(operation);
                     // }
-                    if (objParam.isAndOperator) {
-                        let operationObj = new Operation(OperationFlag.And);
-                        operationObj.getAnd();
-                        operationObj.setIterationCount(this.count++);
-                        operationObj.toJsonString();
-                        objWhere.addConditionalParam(operationObj);
-                    }
-                    else {
-                        let operationObj = new Operation(OperationFlag.Or);
-                        operationObj.getOr();
-                        operationObj.setIterationCount(this.count++);
-                        operationObj.toJsonString();
-                        objWhere.addConditionalParam(operationObj);
+
+                    if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0 && objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {
+                        if (objParam.isAndOperator) {
+                            let operationObj = new Operation(OperationFlag.And);
+                            operationObj.getAnd();
+                            operationObj.setIterationCount(this.count++);
+                            operationObj.toJsonString();
+                            objWhere.addConditionalParam(operationObj);
+                        }
+                        else {
+                            let operationObj = new Operation(OperationFlag.Or);
+                            operationObj.getOr();
+                            operationObj.setIterationCount(this.count++);
+                            operationObj.toJsonString();
+                            objWhere.addConditionalParam(operationObj);
+                        }
                     }
                 });
 
