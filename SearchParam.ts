@@ -14,7 +14,7 @@ export class SearchParam {
     hasMultValueList: any = [];
     hasMultiParam: boolean = false;
     multiparams = [];
-    isAndOperator: boolean;
+    isAndOperator: boolean = true;
 
     constructor() {
         this.operation = new EqualOperation(Equality.Equal);
@@ -24,7 +24,7 @@ export class SearchParam {
     }
 
 
-    searchParamCreate(inName, inDataType, inValue1, objSearchOperation: SearchOperation, isAndOperator) {
+    searchParamCreate(inName, inDataType, inValue1, objSearchOperation: SearchOperation, isAndOperator?) {
         this.name = inName;
         this.dataType = inDataType;
         this.fieldValueFrom = inValue1;
@@ -32,7 +32,7 @@ export class SearchParam {
         this.isAndOperator = isAndOperator;
     }
 
-    searchParamCreator(inName, inDataType, inValue1, isAndOperator) {
+    searchParamCreator(inName, inDataType, inValue1, isAndOperator?) {
 
         var firstChar = inValue1.charAt(0);
         var lastChar = inValue1.substr(inValue1.length - 1);
@@ -54,14 +54,14 @@ export class SearchParam {
         this.searchParamCreate(inName, inDataType, searchedString, SearchOperationBuilder.create(true, bLikeStart, bLikeEnd), isAndOperator);
     }
 
-    searchParamFrom(inName, inDataType, inValue1, isAndOperator) {
+    searchParamFrom(inName, inDataType, inValue1, isAndOperator?) {
         this.name = inName;
         this.dataType = inDataType;
         this.fieldValueFrom = inValue1;
         this.isAndOperator = isAndOperator;
     }
 
-    searchParamFromTo(inName, inDataType, inValue1, inValue2, isAndOperator) {
+    searchParamFromTo(inName, inDataType, inValue1, inValue2, isAndOperator?) {
         inValue1.Month = inValue1.Month + 1;
         inValue2.Month = inValue2.Month + 1;
         this.name = inName;
@@ -73,7 +73,7 @@ export class SearchParam {
             this.fieldValueTo = inValue2;
     }
 
-    searchParamMultiValue(inName, inDataType, multiValueList,isAndOperator) {
+    searchParamMultiValue(inName, inDataType, multiValueList, isAndOperator?) {
         this.name = inName;
         this.dataType = inDataType;
         this.hasMultValueList = multiValueList;

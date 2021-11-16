@@ -86,9 +86,16 @@ export class ConditionCreator {
                     operationObj.toJsonString();
                     objWhere.addConditionalParam(operationObj);
                 }
-                else {
+                else if (objParam.isAndOperator == false) {
                     let operationObj = new Operation(OperationFlag.Or);
                     operationObj.getOr();
+                    operationObj.setIterationCount(this.count++);
+                    operationObj.toJsonString();
+                    objWhere.addConditionalParam(operationObj);
+                }
+                else {
+                    let operationObj = new Operation(OperationFlag.And);
+                    operationObj.getAnd();
                     operationObj.setIterationCount(this.count++);
                     operationObj.toJsonString();
                     objWhere.addConditionalParam(operationObj);

@@ -130,12 +130,12 @@ sp6.isAndOperator = true;
 console.log('checkedItems', checkedItems);
 console.log('sp6', sp6);
 sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination", isAndOperator);
-sp8.searchParamFrom('Shmt_Has_Chrg_at_Src', "string", "Shipment has Charge at Source", isAndOperator);
+sp8.searchParamFrom('Shmt_Has_Chrg_at_Src', "string", "Shipment has Charge at Source");
 sp9.searchParamFrom('Shmt_Has_Unpaid_Invc_Dest', "string", "Shipment has Unpaid invoice at Destination", isAndOperator);
 searchMultiParam.push(sp7, sp8, sp9);
 sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
-searchParam.push(sp6, sp7, sp8, sp9, sp100);
+searchParam.push(sp6, sp8, sp100);
 //        
 var objCreator = new ConditionCreator_1.ConditionCreator();
 console.log('searchParam', searchParam);

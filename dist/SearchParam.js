@@ -12,6 +12,7 @@ var SearchParam = /** @class */ (function () {
         this.hasMultValueList = [];
         this.hasMultiParam = false;
         this.multiparams = [];
+        this.isAndOperator = true;
         this.operation = new EqualOperation_1.EqualOperation(EqualOperation_1.Equality.Equal);
         this.hasMultValueList = [];
         this.hasMultValue = false;

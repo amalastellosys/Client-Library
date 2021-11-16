@@ -69,9 +69,16 @@ var ConditionCreator = /** @class */ (function () {
                     operationObj.toJsonString();
                     objWhere.addConditionalParam(operationObj);
                 }
-                else {
+                else if (objParam.isAndOperator == false) {
                     var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.Or);
                     operationObj.getOr();
+                    operationObj.setIterationCount(_this.count++);
+                    operationObj.toJsonString();
+                    objWhere.addConditionalParam(operationObj);
+                }
+                else {
+                    var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.And);
+                    operationObj.getAnd();
                     operationObj.setIterationCount(_this.count++);
                     operationObj.toJsonString();
                     objWhere.addConditionalParam(operationObj);

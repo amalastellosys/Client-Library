@@ -10,11 +10,11 @@ export declare class SearchParam {
     multiparams: any[];
     isAndOperator: boolean;
     constructor();
-    searchParamCreate(inName: any, inDataType: any, inValue1: any, objSearchOperation: SearchOperation, isAndOperator: any): void;
-    searchParamCreator(inName: any, inDataType: any, inValue1: any, isAndOperator: any): void;
-    searchParamFrom(inName: any, inDataType: any, inValue1: any, isAndOperator: any): void;
-    searchParamFromTo(inName: any, inDataType: any, inValue1: any, inValue2: any, isAndOperator: any): void;
-    searchParamMultiValue(inName: any, inDataType: any, multiValueList: any, isAndOperator: any): void;
+    searchParamCreate(inName: any, inDataType: any, inValue1: any, objSearchOperation: SearchOperation, isAndOperator?: any): void;
+    searchParamCreator(inName: any, inDataType: any, inValue1: any, isAndOperator?: any): void;
+    searchParamFrom(inName: any, inDataType: any, inValue1: any, isAndOperator?: any): void;
+    searchParamFromTo(inName: any, inDataType: any, inValue1: any, inValue2: any, isAndOperator?: any): void;
+    searchParamMultiValue(inName: any, inDataType: any, multiValueList: any, isAndOperator?: any): void;
 }
 export declare abstract class SearchOperation {
     constructor();
