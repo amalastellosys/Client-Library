@@ -17,14 +17,14 @@ var SearchParam = /** @class */ (function () {
         this.hasMultValue = false;
         this.multiparams = [];
     }
-    SearchParam.prototype.searchParamCreate = function (inName, inDataType, inValue1, objSearchOperation) {
+    SearchParam.prototype.searchParamCreate = function (inName, inDataType, inValue1, objSearchOperation, isAndOperator) {
         this.name = inName;
         this.dataType = inDataType;
         this.fieldValueFrom = inValue1;
         this.operation = objSearchOperation;
+        this.isAndOperator = isAndOperator;
     };
-    
-    SearchParam.prototype.searchParamCreator = function (inName, inDataType, inValue1, objSearchOperation) {
+    SearchParam.prototype.searchParamCreator = function (inName, inDataType, inValue1, isAndOperator) {
         var firstChar = inValue1.charAt(0);
         var lastChar = inValue1.substr(inValue1.length - 1);
         var bLikeStart = false;
@@ -41,28 +41,31 @@ var SearchParam = /** @class */ (function () {
         this.name = inName;
         this.dataType = inDataType;
         this.fieldValueFrom = inValue1;
-        this.searchParamCreate(inName, inDataType, searchedString, SearchOperationBuilder.create(true, bLikeStart, bLikeEnd));
+        this.searchParamCreate(inName, inDataType, searchedString, SearchOperationBuilder.create(true, bLikeStart, bLikeEnd), isAndOperator);
     };
-    SearchParam.prototype.searchParamFrom = function (inName, inDataType, inValue1) {
+    SearchParam.prototype.searchParamFrom = function (inName, inDataType, inValue1, isAndOperator) {
         this.name = inName;
         this.dataType = inDataType;
         this.fieldValueFrom = inValue1;
+        this.isAndOperator = isAndOperator;
     };
-    SearchParam.prototype.searchParamFromTo = function (inName, inDataType, inValue1, inValue2) {
+    SearchParam.prototype.searchParamFromTo = function (inName, inDataType, inValue1, inValue2, isAndOperator) {
         inValue1.Month = inValue1.Month + 1;
         inValue2.Month = inValue2.Month + 1;
         this.name = inName;
         this.dataType = inDataType;
+        this.isAndOperator = isAndOperator;
         if (inValue1 != undefined)
             this.fieldValueFrom = inValue1;
         if (inValue2 != undefined)
             this.fieldValueTo = inValue2;
     };
-    SearchParam.prototype.searchParamMultiValue = function (inName, inDataType, multiValueList) {
+    SearchParam.prototype.searchParamMultiValue = function (inName, inDataType, multiValueList, isAndOperator) {
         this.name = inName;
         this.dataType = inDataType;
         this.hasMultValueList = multiValueList;
         this.hasMultValue = true;
+        this.isAndOperator = isAndOperator;
     };
     return SearchParam;
 }());

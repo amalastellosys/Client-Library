@@ -15,6 +15,7 @@ let dt5: any;
 let dt6: any;
 let dt7: any;
 let dt8: any;
+let isAndOperator: boolean = false;
 
 
 let dateTime: any = [];
@@ -64,14 +65,14 @@ let sp23 = new SearchParam();
 let sp24 = new SearchParam();
 let sp100 = new SearchParam();
 
-sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchOperationBuilder.create(true, false, false));
-sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport');
-sp3.searchParamFromTo("shmt_has_income_payment", "datetime", dt1.getDateobj(), dt3.getDateobj());
-sp4.searchParamFrom("shmt_has_expense_payment", "string", 'true');
-sp100.searchParamCreate("shmt_id", "Int", 'Dubai Airport', SearchOperationBuilder.create(true, true, false));
+sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchOperationBuilder.create(true, false, false), isAndOperator);
+sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport', isAndOperator);
+sp3.searchParamFromTo("shmt_has_income_payment", "datetime", dt1.getDateobj(), dt3.getDateobj(), isAndOperator);
+sp4.searchParamFrom("shmt_has_expense_payment", "string", 'true', isAndOperator);
+sp100.searchParamCreate("shmt_id", "Int", 'Dubai Airport', SearchOperationBuilder.create(true, true, false), isAndOperator);
 // sp100.searchParamCreator("shmt_id", "Int", 'Dubai Airport');
 
-console.log('sp100sp100',sp100);
+console.log('sp100sp100', sp100);
 let custmdateObj = new DateCreator();
 //console.log(DateCreator);
 //
@@ -90,49 +91,49 @@ DateCreator.getDate(DateRange.ThisWeek);
 //     "milliSecond": 0
 // };
 // DateCreator.DateFormatter(obj);
-sp11.searchParamFromTo("This Week", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp11.searchParamFromTo("This Week", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.ThisMonth);
-sp12.searchParamFromTo("This Month", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp12.searchParamFromTo("This Month", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.ThisYear);
 console.log(DateCreator.startDate);
 console.log(DateCreator.endDate);
-sp13.searchParamFromTo("This Year", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp13.searchParamFromTo("This Year", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.Yesterday);
-sp14.searchParamFromTo("Yesterday", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp14.searchParamFromTo("Yesterday", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.LastWeek);
-sp15.searchParamFromTo("Last Week", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp15.searchParamFromTo("Last Week", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.LastMonth);
-sp16.searchParamFromTo("Last Month", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp16.searchParamFromTo("Last Month", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.LastYear);
-sp17.searchParamFromTo("Last Year", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp17.searchParamFromTo("Last Year", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.NextWeek);
-sp18.searchParamFromTo("Next Week", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp18.searchParamFromTo("Next Week", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.NextMonth);
-sp19.searchParamFromTo("Next Month", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp19.searchParamFromTo("Next Month", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.NextYear);
-sp20.searchParamFromTo("Next Year", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp20.searchParamFromTo("Next Year", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.Last7days);
-sp21.searchParamFromTo("Last7Days", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp21.searchParamFromTo("Last7Days", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.Last30Days);
-sp22.searchParamFromTo("Last30Days", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp22.searchParamFromTo("Last30Days", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.Today);
-sp23.searchParamFromTo("Today", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate));
+sp23.searchParamFromTo("Today", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 console.log('date1', date1);
 DateCreator.getDate(DateRange.Custom);
-sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime(new Date()), new CustomDateTime(date1));
+sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime(new Date()), new CustomDateTime(date1), isAndOperator);
 
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
 // sp15.searchParamDate("This Month", "datetime", 'This Month');
@@ -151,18 +152,20 @@ checkedItems.forEach(objItem => {
     sp6.hasMultValueList.push(objItem);
     sp6.hasMultValue = true;
 });
+sp6.isAndOperator = true;
+
 console.log('checkedItems', checkedItems);
 console.log('sp6', sp6);
-sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination");
-sp8.searchParamFrom('Shmt_Has_Chrg_at_Src', "string", "Shipment has Charge at Source");
-sp9.searchParamFrom('Shmt_Has_Unpaid_Invc_Dest', "string", "Shipment has Unpaid invoice at Destination");
+sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination", isAndOperator);
+sp8.searchParamFrom('Shmt_Has_Chrg_at_Src', "string", "Shipment has Charge at Source", isAndOperator);
+sp9.searchParamFrom('Shmt_Has_Unpaid_Invc_Dest', "string", "Shipment has Unpaid invoice at Destination", isAndOperator);
 
 searchMultiParam.push(sp7, sp8, sp9);
 sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
 
 searchParam.push(
-    sp6,sp100
+    sp6, sp7, sp8, sp9, sp100
 );
 //        
 let objCreator = new ConditionCreator();

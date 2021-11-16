@@ -79,13 +79,28 @@ export class ConditionCreator {
                     }
                 }
 
-                if (objSearchParamLit != undefined && objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
+                if (objParam.isAndOperator) {
                     let operationObj = new Operation(OperationFlag.And);
                     operationObj.getAnd();
                     operationObj.setIterationCount(this.count++);
                     operationObj.toJsonString();
                     objWhere.addConditionalParam(operationObj);
                 }
+                else {
+                    let operationObj = new Operation(OperationFlag.Or);
+                    operationObj.getOr();
+                    operationObj.setIterationCount(this.count++);
+                    operationObj.toJsonString();
+                    objWhere.addConditionalParam(operationObj);
+                }
+
+                // if (objSearchParamLit != undefined && objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
+                //     let operationObj = new Operation(OperationFlag.And);
+                //     operationObj.getAnd();
+                //     operationObj.setIterationCount(this.count++);
+                //     operationObj.toJsonString();
+                //     objWhere.addConditionalParam(operationObj);
+                // }
             });
         }
         return objWhere
@@ -181,12 +196,26 @@ export class ConditionCreator {
                         }
                     }
 
-                    if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0 && objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {
-                        let operation = new Operation(OperationFlag.Or);
-                        operation.getOr();
-                        operation.setIterationCount(this.count++);
-                        operation.toJsonString();
-                        objWhere.addConditionalParam(operation);
+                    // if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0 && objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {
+                    //     let operation = new Operation(OperationFlag.Or);
+                    //     operation.getOr();
+                    //     operation.setIterationCount(this.count++);
+                    //     operation.toJsonString();
+                    //     objWhere.addConditionalParam(operation);
+                    // }
+                    if (objParam.isAndOperator) {
+                        let operationObj = new Operation(OperationFlag.And);
+                        operationObj.getAnd();
+                        operationObj.setIterationCount(this.count++);
+                        operationObj.toJsonString();
+                        objWhere.addConditionalParam(operationObj);
+                    }
+                    else {
+                        let operationObj = new Operation(OperationFlag.Or);
+                        operationObj.getOr();
+                        operationObj.setIterationCount(this.count++);
+                        operationObj.toJsonString();
+                        objWhere.addConditionalParam(operationObj);
                     }
                 });
 
@@ -201,4 +230,5 @@ export class ConditionCreator {
 
         return objWhere
     }
+
 }
