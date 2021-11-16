@@ -175,12 +175,19 @@ var ConditionCreator = /** @class */ (function () {
                             operationObj_1.toJsonString();
                             objWhere.addConditionalParam(operationObj_1);
                         }
-                        else {
-                            var operationObj_2 = new Operation_1.Operation(Operation_1.OperationFlag.Or);
-                            operationObj_2.getOr();
+                        else if (objParam.isAndOperator == false) {
+                            var operationObj_2 = new Operation_1.Operation(Operation_1.OperationFlag.And);
+                            operationObj_2.getAnd();
                             operationObj_2.setIterationCount(_this.count++);
                             operationObj_2.toJsonString();
                             objWhere.addConditionalParam(operationObj_2);
+                        }
+                        else {
+                            var operationObj_3 = new Operation_1.Operation(Operation_1.OperationFlag.Or);
+                            operationObj_3.getOr();
+                            operationObj_3.setIterationCount(_this.count++);
+                            operationObj_3.toJsonString();
+                            objWhere.addConditionalParam(operationObj_3);
                         }
                     }
                 });
