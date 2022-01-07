@@ -56,7 +56,7 @@ var sp22 = new SearchParam_1.SearchParam();
 var sp23 = new SearchParam_1.SearchParam();
 var sp24 = new SearchParam_1.SearchParam();
 var sp100 = new SearchParam_1.SearchParam();
-sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchParam_1.SearchOperationBuilder.create(true, false, false));
+sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchParam_1.SearchOperationBuilder.create(true, false, false), false);
 sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport', isAndOperator);
 sp3.searchParamFromTo("shmt_has_income_payment", "datetime", dt1.getDateobj(), dt3.getDateobj(), isAndOperator);
 sp4.searchParamFrom("shmt_has_expense_payment", "string", 'true', isAndOperator);
@@ -106,10 +106,10 @@ sp21.searchParamFromTo("Last7Days", "datetime", new CustomDateTime_1.CustomDateT
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Last30Days);
 sp22.searchParamFromTo("Last30Days", "datetime", new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.startDate), new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.endDate), isAndOperator);
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Today);
-sp23.searchParamFromTo("Today", "datetime", new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.startDate), new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.endDate), isAndOperator);
+sp23.searchParamFromTo("Today", "datetime", new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.startDate), new CustomDateTime_1.CustomDateTime(DateCreator_1.DateCreator.endDate), false);
 console.log('date1', date1);
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Custom);
-sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime_1.CustomDateTime(new Date()), new CustomDateTime_1.CustomDateTime(date1), isAndOperator);
+sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime_1.CustomDateTime(new Date()), new CustomDateTime_1.CustomDateTime(date1));
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
 // sp15.searchParamDate("This Month", "datetime", 'This Month');
 // sp16.searchParamDate("This Year", "datetime", 'This Year');
@@ -127,6 +127,8 @@ checkedItems.forEach(function (objItem) {
     sp6.hasMultValue = true;
 });
 sp6.isAndOperator = true;
+sp5.hasMultiParam = true;
+sp5.multiparams.push(sp23, sp24);
 console.log('checkedItems', checkedItems);
 console.log('sp6', sp6);
 sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination", isAndOperator);
@@ -135,7 +137,7 @@ sp9.searchParamFrom('Shmt_Has_Unpaid_Invc_Dest', "string", "Shipment has Unpaid 
 searchMultiParam.push(sp7, sp8, sp9);
 sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
-searchParam.push(sp1);
+searchParam.push(sp1, sp5);
 //        
 var objCreator = new ConditionCreator_1.ConditionCreator();
 console.log('searchParam', searchParam);

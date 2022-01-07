@@ -14,7 +14,7 @@ var ConditionCreator = /** @class */ (function () {
         var objWhere = new Where_1.Where();
         var dataTimeString = "datetime";
         if (objSearchParamLit != null) {
-            objSearchParamLit.forEach(function (objParam) {
+            objSearchParamLit.forEach(function (objParam, index) {
                 if (objParam.dataType == null)
                     objParam.dataType = "String";
                 if (objParam.dataType.toLowerCase() == dataTimeString.toLowerCase() && objParam.fieldValueTo != null) {
@@ -62,7 +62,7 @@ var ConditionCreator = /** @class */ (function () {
                         objWhere.addConditionalParam(operation);
                     }
                 }
-                if (objSearchParamLit != undefined && objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
+                if (objSearchParamLit != undefined && objSearchParamLit.length >= 2 && index != (objSearchParamLit.length - 1)) {
                     if (objParam.isAndOperator) {
                         var operationObj = new Operation_1.Operation(Operation_1.OperationFlag.And);
                         operationObj.getAnd();
@@ -107,7 +107,7 @@ var ConditionCreator = /** @class */ (function () {
                 operationObj.setIterationCount(this.count++);
                 operationObj.toJsonString();
                 objWhere.addConditionalParam(operationObj);
-                objSearchParam.multiparams.forEach(function (objParam) {
+                objSearchParam.multiparams.forEach(function (objParam, index) {
                     if (objParam.dataType == null) {
                         objParam.dataType = "string";
                     }
@@ -167,7 +167,7 @@ var ConditionCreator = /** @class */ (function () {
                     //     operation.toJsonString();
                     //     objWhere.addConditionalParam(operation);
                     // }
-                    if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0 && objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {
+                    if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length >= 2 && index != (objSearchParam.multiparams.length - 1)) {
                         if (objParam.isAndOperator) {
                             var operationObj_1 = new Operation_1.Operation(Operation_1.OperationFlag.And);
                             operationObj_1.getAnd();

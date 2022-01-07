@@ -65,7 +65,7 @@ let sp23 = new SearchParam();
 let sp24 = new SearchParam();
 let sp100 = new SearchParam();
 
-sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchOperationBuilder.create(true, false, false));
+sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchOperationBuilder.create(true, false, false), false);
 sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport', isAndOperator);
 sp3.searchParamFromTo("shmt_has_income_payment", "datetime", dt1.getDateobj(), dt3.getDateobj(), isAndOperator);
 sp4.searchParamFrom("shmt_has_expense_payment", "string", 'true', isAndOperator);
@@ -129,11 +129,11 @@ DateCreator.getDate(DateRange.Last30Days);
 sp22.searchParamFromTo("Last30Days", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
 
 DateCreator.getDate(DateRange.Today);
-sp23.searchParamFromTo("Today", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), isAndOperator);
+sp23.searchParamFromTo("Today", "datetime", new CustomDateTime(DateCreator.startDate), new CustomDateTime(DateCreator.endDate), false);
 
 console.log('date1', date1);
 DateCreator.getDate(DateRange.Custom);
-sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime(new Date()), new CustomDateTime(date1), isAndOperator);
+sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime(new Date()), new CustomDateTime(date1));
 
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
 // sp15.searchParamDate("This Month", "datetime", 'This Month');
@@ -154,6 +154,9 @@ checkedItems.forEach(objItem => {
 });
 sp6.isAndOperator = true;
 
+sp5.hasMultiParam = true;
+sp5.multiparams.push(sp23, sp24);
+
 console.log('checkedItems', checkedItems);
 console.log('sp6', sp6);
 sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination", isAndOperator);
@@ -165,7 +168,7 @@ sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
 
 searchParam.push(
-    sp1,
+    sp1,sp5
 );
 //        
 let objCreator = new ConditionCreator();

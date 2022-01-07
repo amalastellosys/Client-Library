@@ -22,7 +22,7 @@ export class ConditionCreator {
 
         if (objSearchParamLit != null) {
 
-            objSearchParamLit.forEach(objParam => {
+            objSearchParamLit.forEach((objParam, index) => {
 
                 if (objParam.dataType == null)
                     objParam.dataType = "String";
@@ -79,7 +79,7 @@ export class ConditionCreator {
                     }
                 }
 
-                if (objSearchParamLit != undefined && objSearchParamLit[objSearchParamLit.length - 1] != objParam) {
+                if (objSearchParamLit != undefined && objSearchParamLit.length >= 2 && index != (objSearchParamLit.length - 1)) {
                     if (objParam.isAndOperator) {
                         let operationObj = new Operation(OperationFlag.And);
                         operationObj.getAnd();
@@ -131,7 +131,7 @@ export class ConditionCreator {
                 operationObj.toJsonString();
                 objWhere.addConditionalParam(operationObj);
 
-                objSearchParam.multiparams.forEach(objParam => {
+                objSearchParam.multiparams.forEach((objParam, index) => {
 
                     if (objParam.dataType == null) {
                         objParam.dataType = "string";
@@ -213,7 +213,7 @@ export class ConditionCreator {
                     //     objWhere.addConditionalParam(operation);
                     // }
 
-                    if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0 && objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {
+                    if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length >= 2 && index != (objSearchParam.multiparams.length - 1)) {
                         if (objParam.isAndOperator) {
                             let operationObj = new Operation(OperationFlag.And);
                             operationObj.getAnd();
