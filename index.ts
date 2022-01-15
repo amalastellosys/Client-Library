@@ -136,7 +136,7 @@ console.log('date1', date1);
 DateCreator.getDate(DateRange.Custom);
 sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime(new Date()), new CustomDateTime(date1));
 
-sp101.searchParamGreaterThan("firstName", "secondNAme", "double", "200");
+sp101.searchParamGreaterThanComparer("firstName", "secondNAme", "double", "200");
 console.log('sp101',sp101);
 
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
