@@ -63,7 +63,7 @@ export class SearchParam {
         this.isAndOperator = isAndOperator;
     }
 
-    searchParamGreaterThan(inName, secondName, inDataType, inValue1, isAndOperator?) {
+    searchParamGreaterThanComparer(inName, secondName, inDataType, inValue1, isAndOperator?) {
         this.name = inName;
         this.secondName = secondName;
         this.fieldValueFrom = inValue1;
