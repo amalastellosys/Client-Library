@@ -18,6 +18,12 @@ var Operand = /** @class */ (function () {
         this.Value = value;
         this.Type = type;
     };
+    Operand.prototype.abstractOperandObjGreaterThan = function (inName, secondName, value, type) {
+        this.Name = inName;
+        this.SecondName = secondName;
+        this.Value = value;
+        this.Type = type;
+    };
     return Operand;
 }());
 exports.Operand = Operand;

@@ -64,6 +64,7 @@ let sp22 = new SearchParam();
 let sp23 = new SearchParam();
 let sp24 = new SearchParam();
 let sp100 = new SearchParam();
+let sp101 = new SearchParam();
 
 sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchOperationBuilder.create(true, false, false), false);
 sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport', isAndOperator);
@@ -135,6 +136,9 @@ console.log('date1', date1);
 DateCreator.getDate(DateRange.Custom);
 sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime(new Date()), new CustomDateTime(date1));
 
+sp101.searchParamGreaterThan("firstName", "secondNAme", "double", "200");
+console.log('sp101',sp101);
+
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
 // sp15.searchParamDate("This Month", "datetime", 'This Month');
 // sp16.searchParamDate("This Year", "datetime", 'This Year');
@@ -168,9 +172,12 @@ sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
 
 searchParam.push(
-    sp1,sp5
+     sp101
 );
-//        
+//GreaterThanSimulator
+//GreaterThanIntegrator
+//greaterThanIterator 
+//GreaterThanComparer
 let objCreator = new ConditionCreator();
 
 console.log('searchParam', searchParam);

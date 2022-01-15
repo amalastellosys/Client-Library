@@ -8,6 +8,7 @@ import { In } from "./In";
 import { NotIn } from "./NotIn";
 import { EqualOperation } from "./EqualOperation";
 import { BetweenReverse } from "./BetweenReverse";
+import { GreaterThanComparer } from "./GreaterThanComparer";
 
 export class Operation {
 
@@ -22,6 +23,7 @@ export class Operation {
     private _NotIn: NotIn;
     private _StartParenthesis: StartParenthesis;
     private _CloseParenthesis: CloseParenthesis;
+    private _GreaterThanComparer: GreaterThanComparer;
     _Status: OperationFlag;
 
 
@@ -129,6 +131,15 @@ export class Operation {
         this._CloseParenthesis = value;
     }
 
+    getGreaterThan(): GreaterThanComparer {
+        this._GreaterThanComparer = new GreaterThanComparer();
+        return this._GreaterThanComparer;
+    }
+
+    setGreaterThan(value: GreaterThanComparer) {
+        this._GreaterThanComparer = value;
+    }
+
     toJsonString(): string {
 
         let strJson = JSON.stringify(this);
@@ -160,6 +171,7 @@ export enum OperationFlag {
     Or = 6,
     In = 7,
     StartParenthesis = 8,
-    CloseParenthesis = 9
+    CloseParenthesis = 9,
+    GreaterThanComparer = 10
 
 }

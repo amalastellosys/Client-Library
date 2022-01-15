@@ -1,5 +1,6 @@
 export declare class SearchParam {
     name: string;
+    secondName: string;
     dataType: string;
     fieldValueFrom: any;
     fieldValueTo: any;
@@ -13,6 +14,7 @@ export declare class SearchParam {
     searchParamCreate(inName: any, inDataType: any, inValue1: any, objSearchOperation: SearchOperation, isAndOperator?: any): void;
     searchParamCreator(inName: any, inDataType: any, inValue1: any, isAndOperator?: any): void;
     searchParamFrom(inName: any, inDataType: any, inValue1: any, isAndOperator?: any): void;
+    searchParamGreaterThan(inName: any, secondName: any, inDataType: any, inValue1: any, isAndOperator?: any): void;
     searchParamFromTo(inName: any, inDataType: any, inValue1: any, inValue2: any, isAndOperator?: any): void;
     searchParamMultiValue(inName: any, inDataType: any, multiValueList: any, isAndOperator?: any): void;
 }

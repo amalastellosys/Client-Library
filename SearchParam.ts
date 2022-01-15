@@ -1,10 +1,12 @@
 import { EqualOperation, Equality } from "./EqualOperation";
+import { GreaterThanComparer } from "./GreaterThanComparer";
 import { LikeOperation } from "./LikeOperation";
 
 export class SearchParam {
 
 
     name: string = null;
+    secondName: string = null;
     dataType: string = null;
     //fieldValue: string;
     fieldValueFrom: any;
@@ -59,6 +61,18 @@ export class SearchParam {
         this.dataType = inDataType;
         this.fieldValueFrom = inValue1;
         this.isAndOperator = isAndOperator;
+    }
+
+    searchParamGreaterThan(inName, secondName, inDataType, inValue1, isAndOperator?) {
+        this.name = inName;
+        this.secondName = secondName;
+        this.fieldValueFrom = inValue1;
+        this.dataType = inDataType;
+        this.operation = new GreaterThanComparer();;
+        if (isAndOperator)
+            this.isAndOperator = isAndOperator;
+        else
+            this.isAndOperator = this.isAndOperator;
     }
 
     searchParamFromTo(inName, inDataType, inValue1, inValue2, isAndOperator?) {

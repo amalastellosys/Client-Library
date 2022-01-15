@@ -8,6 +8,7 @@ import { In } from "./In";
 import { NotIn } from "./NotIn";
 import { EqualOperation } from "./EqualOperation";
 import { BetweenReverse } from "./BetweenReverse";
+import { GreaterThanComparer } from "./GreaterThanComparer";
 export declare class Operation {
     IterationCount: number;
     private _Or;
@@ -20,6 +21,7 @@ export declare class Operation {
     private _NotIn;
     private _StartParenthesis;
     private _CloseParenthesis;
+    private _GreaterThanComparer;
     _Status: OperationFlag;
     constructor(p_status: OperationFlag);
     getIterationCount(): number;
@@ -44,6 +46,8 @@ export declare class Operation {
     setStartParenthesis(value: StartParenthesis): void;
     getCloseParenthesis(): CloseParenthesis;
     setCloseParenthesis(value: CloseParenthesis): void;
+    getGreaterThan(): GreaterThanComparer;
+    setGreaterThan(value: GreaterThanComparer): void;
     toJsonString(): string;
 }
 export declare enum OperationFlag {
@@ -56,5 +60,6 @@ export declare enum OperationFlag {
     Or = 6,
     In = 7,
     StartParenthesis = 8,
-    CloseParenthesis = 9
+    CloseParenthesis = 9,
+    GreaterThanComparer = 10
 }

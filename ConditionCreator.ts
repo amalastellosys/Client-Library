@@ -4,6 +4,7 @@ import { SearchParam } from "./SearchParam";
 import { Where } from "./Where";
 import { Operand } from "./Operand";
 import { Operation, OperationFlag } from "./Operation";
+import { GreaterThanComparer } from "./GreaterThanComparer";
 
 
 export class ConditionCreator {
@@ -62,6 +63,18 @@ export class ConditionCreator {
                         operation.setIterationCount(this.count++);
                         operation.toJsonString();
                         objWhere.addConditionalParam(operation);
+                    }
+
+                    if (objParam.operation instanceof GreaterThanComparer) {
+
+                        let operation = new Operation(OperationFlag.GreaterThanComparer);
+                        let objEqualOption: GreaterThanComparer = (<GreaterThanComparer>(objParam.operation));
+
+                        operation.getGreaterThan().greaterThanOperand(objParam.name, objParam.secondName, objParam.fieldValueFrom, objParam.dataType);
+                        operation.setIterationCount(this.count++);
+                        operation.toJsonString();
+                        objWhere.addConditionalParam(operation);
+
                     }
 
                     else if (objParam.operation instanceof LikeOperation) {
@@ -183,6 +196,18 @@ export class ConditionCreator {
                             let objEqualOption: EqualOperation = (<EqualOperation>(objParam.operation));
 
                             operation.getEqualOperation().equalOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                            operation.setIterationCount(this.count++);
+                            operation.toJsonString();
+                            objWhere.addConditionalParam(operation);
+
+                        }
+
+                        if (objSearchParam.operation instanceof GreaterThanComparer) {
+
+                            let operation = new Operation(OperationFlag.GreaterThanComparer);
+                            let objEqualOption: GreaterThanComparer = (<GreaterThanComparer>(objParam.operation));
+
+                            operation.getGreaterThan().greaterThanOperand(objParam.name, objParam.secondName, objParam.fieldValueFrom, objParam.dataType);
                             operation.setIterationCount(this.count++);
                             operation.toJsonString();
                             objWhere.addConditionalParam(operation);

@@ -1,0 +1,1 @@
+{"version":3,"file":"GreaterThan.js","sourceRoot":"","sources":["../GreaterThan.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;AACA,qCAAoC;AAEpC;IAAiC,+BAAO;IAEpC;eAEI,iBAAO;IACX,CAAC;IAED,wCAAkB,GAAlB,UAAmB,IAAI,EAAE,UAAU,EAAE,KAAK,EAAE,IAAI;QAE5C,iBAAM,6BAA6B,YAAC,IAAI,EAAE,UAAU,EAAE,KAAK,EAAE,IAAI,CAAC,CAAC;IACvE,CAAC;IAEL,kBAAC;AAAD,CAAC,AAZD,CAAiC,iBAAO,GAYvC;AAZY,kCAAW"}

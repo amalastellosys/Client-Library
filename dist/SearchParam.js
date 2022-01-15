@@ -2,10 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SearchOpEquality = exports.SearchOperationBuilder = exports.SearchOperation = exports.SearchParam = void 0;
 var EqualOperation_1 = require("./EqualOperation");
+var GreaterThanComparer_1 = require("./GreaterThanComparer");
 var LikeOperation_1 = require("./LikeOperation");
 var SearchParam = /** @class */ (function () {
     function SearchParam() {
         this.name = null;
+        this.secondName = null;
         this.dataType = null;
         this.operation = null;
         this.hasMultValue = false;
@@ -49,6 +51,18 @@ var SearchParam = /** @class */ (function () {
         this.dataType = inDataType;
         this.fieldValueFrom = inValue1;
         this.isAndOperator = isAndOperator;
+    };
+    SearchParam.prototype.searchParamGreaterThan = function (inName, secondName, inDataType, inValue1, isAndOperator) {
+        this.name = inName;
+        this.secondName = secondName;
+        this.fieldValueFrom = inValue1;
+        this.dataType = inDataType;
+        this.operation = new GreaterThanComparer_1.GreaterThanComparer();
+        ;
+        if (isAndOperator)
+            this.isAndOperator = isAndOperator;
+        else
+            this.isAndOperator = this.isAndOperator;
     };
     SearchParam.prototype.searchParamFromTo = function (inName, inDataType, inValue1, inValue2, isAndOperator) {
         inValue1.Month = inValue1.Month + 1;

@@ -5,6 +5,7 @@ var LikeOperation_1 = require("./LikeOperation");
 var EqualOperation_1 = require("./EqualOperation");
 var Where_1 = require("./Where");
 var Operation_1 = require("./Operation");
+var GreaterThanComparer_1 = require("./GreaterThanComparer");
 var ConditionCreator = /** @class */ (function () {
     function ConditionCreator() {
         this.count = 1;
@@ -45,6 +46,14 @@ var ConditionCreator = /** @class */ (function () {
                         var operation = new Operation_1.Operation(Operation_1.OperationFlag.EqualOperation);
                         var objEqualOption = (objParam.operation);
                         operation.getEqualOperation().equalOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                        operation.setIterationCount(_this.count++);
+                        operation.toJsonString();
+                        objWhere.addConditionalParam(operation);
+                    }
+                    if (objParam.operation instanceof GreaterThanComparer_1.GreaterThanComparer) {
+                        var operation = new Operation_1.Operation(Operation_1.OperationFlag.GreaterThanComparer);
+                        var objEqualOption = (objParam.operation);
+                        operation.getGreaterThan().greaterThanOperand(objParam.name, objParam.secondName, objParam.fieldValueFrom, objParam.dataType);
                         operation.setIterationCount(_this.count++);
                         operation.toJsonString();
                         objWhere.addConditionalParam(operation);
@@ -148,16 +157,24 @@ var ConditionCreator = /** @class */ (function () {
                             operation_4.toJsonString();
                             objWhere.addConditionalParam(operation_4);
                         }
-                        else if (objSearchParam.operation instanceof LikeOperation_1.LikeOperation) {
-                            var operation_5 = new Operation_1.Operation(Operation_1.OperationFlag.LikeOperation);
-                            var objLikeOption = (objParam.operation);
-                            operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
-                            if (!operation_5.getLikeOperation().likeMode) {
-                                operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
-                            }
+                        if (objSearchParam.operation instanceof GreaterThanComparer_1.GreaterThanComparer) {
+                            var operation_5 = new Operation_1.Operation(Operation_1.OperationFlag.GreaterThanComparer);
+                            var objEqualOption = (objParam.operation);
+                            operation_5.getGreaterThan().greaterThanOperand(objParam.name, objParam.secondName, objParam.fieldValueFrom, objParam.dataType);
                             operation_5.setIterationCount(_this.count++);
                             operation_5.toJsonString();
                             objWhere.addConditionalParam(operation_5);
+                        }
+                        else if (objSearchParam.operation instanceof LikeOperation_1.LikeOperation) {
+                            var operation_6 = new Operation_1.Operation(Operation_1.OperationFlag.LikeOperation);
+                            var objLikeOption = (objParam.operation);
+                            operation_6.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                            if (!operation_6.getLikeOperation().likeMode) {
+                                operation_6.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                            }
+                            operation_6.setIterationCount(_this.count++);
+                            operation_6.toJsonString();
+                            objWhere.addConditionalParam(operation_6);
                         }
                     }
                     // if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0 && objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {

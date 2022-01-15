@@ -2,6 +2,7 @@
 export class Operand {
 
     private Name: string;
+    private SecondName: string;
     private Type: string;
     private Value: string;
     private operation: any;
@@ -28,6 +29,14 @@ export class Operand {
     abstractOperandObjLike(inName, value, type) {
 
         this.Name = inName;
+        this.Value = value;
+        this.Type = type;
+    }
+
+    abstractOperandObjGreaterThan(inName, secondName, value, type) {
+
+        this.Name = inName;
+        this.SecondName = secondName;
         this.Value = value;
         this.Type = type;
     }

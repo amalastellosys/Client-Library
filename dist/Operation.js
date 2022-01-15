@@ -11,6 +11,7 @@ var In_1 = require("./In");
 var NotIn_1 = require("./NotIn");
 var EqualOperation_1 = require("./EqualOperation");
 var BetweenReverse_1 = require("./BetweenReverse");
+var GreaterThanComparer_1 = require("./GreaterThanComparer");
 var Operation = /** @class */ (function () {
     function Operation(p_status) {
         this.IterationCount;
@@ -92,6 +93,13 @@ var Operation = /** @class */ (function () {
     Operation.prototype.setCloseParenthesis = function (value) {
         this._CloseParenthesis = value;
     };
+    Operation.prototype.getGreaterThan = function () {
+        this._GreaterThanComparer = new GreaterThanComparer_1.GreaterThanComparer();
+        return this._GreaterThanComparer;
+    };
+    Operation.prototype.setGreaterThan = function (value) {
+        this._GreaterThanComparer = value;
+    };
     Operation.prototype.toJsonString = function () {
         var _this = this;
         var strJson = JSON.stringify(this);
@@ -122,5 +130,6 @@ var OperationFlag;
     OperationFlag[OperationFlag["In"] = 7] = "In";
     OperationFlag[OperationFlag["StartParenthesis"] = 8] = "StartParenthesis";
     OperationFlag[OperationFlag["CloseParenthesis"] = 9] = "CloseParenthesis";
+    OperationFlag[OperationFlag["GreaterThanComparer"] = 10] = "GreaterThanComparer";
 })(OperationFlag = exports.OperationFlag || (exports.OperationFlag = {}));
 //# sourceMappingURL=Operation.js.map

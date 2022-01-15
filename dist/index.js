@@ -56,6 +56,7 @@ var sp22 = new SearchParam_1.SearchParam();
 var sp23 = new SearchParam_1.SearchParam();
 var sp24 = new SearchParam_1.SearchParam();
 var sp100 = new SearchParam_1.SearchParam();
+var sp101 = new SearchParam_1.SearchParam();
 sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchParam_1.SearchOperationBuilder.create(true, false, false), false);
 sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport', isAndOperator);
 sp3.searchParamFromTo("shmt_has_income_payment", "datetime", dt1.getDateobj(), dt3.getDateobj(), isAndOperator);
@@ -110,6 +111,8 @@ sp23.searchParamFromTo("Today", "datetime", new CustomDateTime_1.CustomDateTime(
 console.log('date1', date1);
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Custom);
 sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime_1.CustomDateTime(new Date()), new CustomDateTime_1.CustomDateTime(date1));
+sp101.searchParamGreaterThan("firstName", "secondNAme", "double", "200");
+console.log('sp101', sp101);
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
 // sp15.searchParamDate("This Month", "datetime", 'This Month');
 // sp16.searchParamDate("This Year", "datetime", 'This Year');
@@ -137,8 +140,11 @@ sp9.searchParamFrom('Shmt_Has_Unpaid_Invc_Dest', "string", "Shipment has Unpaid 
 searchMultiParam.push(sp7, sp8, sp9);
 sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
-searchParam.push(sp1, sp5);
-//        
+searchParam.push(sp101);
+//GreaterThanSimulator
+//GreaterThanIntegrator
+//greaterThanIterator 
+//GreaterThanComparer
 var objCreator = new ConditionCreator_1.ConditionCreator();
 console.log('searchParam', searchParam);
 objWhere = objCreator.getSearchCondition(searchParam);
