@@ -52,7 +52,7 @@ var SearchParam = /** @class */ (function () {
         this.fieldValueFrom = inValue1;
         this.isAndOperator = isAndOperator;
     };
-    SearchParam.prototype.searchParamGreaterThan = function (inName, secondName, inDataType, inValue1, isAndOperator) {
+    SearchParam.prototype.searchParamGreaterThanComparer = function (inName, secondName, inDataType, inValue1, isAndOperator) {
         this.name = inName;
         this.secondName = secondName;
         this.fieldValueFrom = inValue1;

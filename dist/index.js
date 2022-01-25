@@ -111,7 +111,7 @@ sp23.searchParamFromTo("Today", "datetime", new CustomDateTime_1.CustomDateTime(
 console.log('date1', date1);
 DateCreator_1.DateCreator.getDate(DateCreator_1.DateRange.Custom);
 sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime_1.CustomDateTime(new Date()), new CustomDateTime_1.CustomDateTime(date1));
-sp101.searchParamGreaterThan("firstName", "secondNAme", "double", "200");
+sp101.searchParamGreaterThanComparer("firstName", "secondNAme", "double", "200");
 console.log('sp101', sp101);
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
 // sp15.searchParamDate("This Month", "datetime", 'This Month');
