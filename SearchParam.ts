@@ -1,6 +1,7 @@
 import { EqualOperation, Equality } from "./EqualOperation";
 import { GreaterThanComparer } from "./GreaterThanComparer";
 import { LikeOperation } from "./LikeOperation";
+import { NotEqualOperation } from "./NotEqualOperation";
 
 export class SearchParam {
 
@@ -200,7 +201,7 @@ export class SearchOperationBuilder {
                 this.objSearchOperation = new EqualOperation(Equality.Equal);
             }
             else {
-                this.objSearchOperation = new EqualOperation(Equality.NotEqual);
+                this.objSearchOperation = new NotEqualOperation(Equality.NotEqual);
             }
         }
         else {

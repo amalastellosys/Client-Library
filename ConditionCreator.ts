@@ -5,6 +5,7 @@ import { Where } from "./Where";
 import { Operand } from "./Operand";
 import { Operation, OperationFlag } from "./Operation";
 import { GreaterThanComparer } from "./GreaterThanComparer";
+import { NotEqualOperation } from "./NotEqualOperation";
 
 
 export class ConditionCreator {
@@ -60,6 +61,15 @@ export class ConditionCreator {
                         let operation = new Operation(OperationFlag.EqualOperation);
                         let objEqualOption: EqualOperation = (<EqualOperation>(objParam.operation));
                         operation.getEqualOperation().equalOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                        operation.setIterationCount(this.count++);
+                        operation.toJsonString();
+                        objWhere.addConditionalParam(operation);
+                    }
+
+                    if (objParam.operation instanceof NotEqualOperation) {
+                        let operation = new Operation(OperationFlag.NotEqualOperation);
+                        let objEqualOption: NotEqualOperation = (<NotEqualOperation>(objParam.operation));
+                        operation.getNotEqualOperation().notEqualOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
                         operation.setIterationCount(this.count++);
                         operation.toJsonString();
                         objWhere.addConditionalParam(operation);

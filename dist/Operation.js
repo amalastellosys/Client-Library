@@ -12,6 +12,7 @@ var NotIn_1 = require("./NotIn");
 var EqualOperation_1 = require("./EqualOperation");
 var BetweenReverse_1 = require("./BetweenReverse");
 var GreaterThanComparer_1 = require("./GreaterThanComparer");
+var NotEqualOperation_1 = require("./NotEqualOperation");
 var Operation = /** @class */ (function () {
     function Operation(p_status) {
         this.IterationCount;
@@ -43,6 +44,13 @@ var Operation = /** @class */ (function () {
     };
     Operation.prototype.setEqualOperation = function (value) {
         this._EqualOperation = value;
+    };
+    Operation.prototype.getNotEqualOperation = function () {
+        this._NotEqualOperation = new NotEqualOperation_1.NotEqualOperation();
+        return this._NotEqualOperation;
+    };
+    Operation.prototype.setNotEqualOperation = function (value) {
+        this._NotEqualOperation = value;
     };
     Operation.prototype.getLikeOperation = function () {
         this._LikeOperation = new LikeOperation_1.LikeOperation();
@@ -131,5 +139,6 @@ var OperationFlag;
     OperationFlag[OperationFlag["StartParenthesis"] = 8] = "StartParenthesis";
     OperationFlag[OperationFlag["CloseParenthesis"] = 9] = "CloseParenthesis";
     OperationFlag[OperationFlag["GreaterThanComparer"] = 10] = "GreaterThanComparer";
+    OperationFlag[OperationFlag["NotEqualOperation"] = 11] = "NotEqualOperation";
 })(OperationFlag = exports.OperationFlag || (exports.OperationFlag = {}));
 //# sourceMappingURL=Operation.js.map

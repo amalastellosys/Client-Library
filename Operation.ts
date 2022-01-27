@@ -9,6 +9,7 @@ import { NotIn } from "./NotIn";
 import { EqualOperation } from "./EqualOperation";
 import { BetweenReverse } from "./BetweenReverse";
 import { GreaterThanComparer } from "./GreaterThanComparer";
+import { NotEqualOperation } from "./NotEqualOperation";
 
 export class Operation {
 
@@ -16,6 +17,7 @@ export class Operation {
     private _Or: Or;
     private _And: And;
     private _EqualOperation: EqualOperation;
+    private _NotEqualOperation: NotEqualOperation;
     private _LikeOperation: LikeOperation;
     private _Between: Between;
     private _BetweenReverse: BetweenReverse;
@@ -66,6 +68,15 @@ export class Operation {
 
     setEqualOperation(value: EqualOperation) {
         this._EqualOperation = value;
+    }
+
+    getNotEqualOperation(): NotEqualOperation {
+        this._NotEqualOperation = new NotEqualOperation();
+        return this._NotEqualOperation;
+    }
+
+    setNotEqualOperation(value: NotEqualOperation) {
+        this._NotEqualOperation = value;
     }
 
     getLikeOperation(): LikeOperation {
@@ -119,7 +130,7 @@ export class Operation {
     }
 
     setStartParenthesis(value: StartParenthesis) {
-        this._StartParenthesis = value;   
+        this._StartParenthesis = value;
     }
 
     getCloseParenthesis(): CloseParenthesis {
@@ -172,6 +183,7 @@ export enum OperationFlag {
     In = 7,
     StartParenthesis = 8,
     CloseParenthesis = 9,
-    GreaterThanComparer = 10
+    GreaterThanComparer = 10,
+    NotEqualOperation = 11
 
 }

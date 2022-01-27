@@ -9,11 +9,13 @@ import { NotIn } from "./NotIn";
 import { EqualOperation } from "./EqualOperation";
 import { BetweenReverse } from "./BetweenReverse";
 import { GreaterThanComparer } from "./GreaterThanComparer";
+import { NotEqualOperation } from "./NotEqualOperation";
 export declare class Operation {
     IterationCount: number;
     private _Or;
     private _And;
     private _EqualOperation;
+    private _NotEqualOperation;
     private _LikeOperation;
     private _Between;
     private _BetweenReverse;
@@ -32,6 +34,8 @@ export declare class Operation {
     setAnd(value: And): void;
     getEqualOperation(): EqualOperation;
     setEqualOperation(value: EqualOperation): void;
+    getNotEqualOperation(): NotEqualOperation;
+    setNotEqualOperation(value: NotEqualOperation): void;
     getLikeOperation(): LikeOperation;
     setLikeOperation(value: LikeOperation): void;
     getBetween(): Between;
@@ -61,5 +65,6 @@ export declare enum OperationFlag {
     In = 7,
     StartParenthesis = 8,
     CloseParenthesis = 9,
-    GreaterThanComparer = 10
+    GreaterThanComparer = 10,
+    NotEqualOperation = 11
 }

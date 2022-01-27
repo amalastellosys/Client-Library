@@ -4,6 +4,7 @@ exports.SearchOpEquality = exports.SearchOperationBuilder = exports.SearchOperat
 var EqualOperation_1 = require("./EqualOperation");
 var GreaterThanComparer_1 = require("./GreaterThanComparer");
 var LikeOperation_1 = require("./LikeOperation");
+var NotEqualOperation_1 = require("./NotEqualOperation");
 var SearchParam = /** @class */ (function () {
     function SearchParam() {
         this.name = null;
@@ -160,7 +161,7 @@ var SearchOperationBuilder = /** @class */ (function () {
                 this.objSearchOperation = new EqualOperation_1.EqualOperation(EqualOperation_1.Equality.Equal);
             }
             else {
-                this.objSearchOperation = new EqualOperation_1.EqualOperation(EqualOperation_1.Equality.NotEqual);
+                this.objSearchOperation = new NotEqualOperation_1.NotEqualOperation(EqualOperation_1.Equality.NotEqual);
             }
         }
         else {

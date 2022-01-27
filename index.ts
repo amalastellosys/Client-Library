@@ -70,7 +70,7 @@ sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchOperati
 sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport', isAndOperator);
 sp3.searchParamFromTo("shmt_has_income_payment", "datetime", dt1.getDateobj(), dt3.getDateobj(), isAndOperator);
 sp4.searchParamFrom("shmt_has_expense_payment", "string", 'true', isAndOperator);
-sp100.searchParamCreate("shmt_id", "Int", 'Dubai Airport', SearchOperationBuilder.create(true, true, false), isAndOperator);
+sp100.searchParamCreate("shmt_id", "Int", '0', SearchOperationBuilder.create(false, false, false), isAndOperator);
 // sp100.searchParamCreator("shmt_id", "Int", 'Dubai Airport');
 
 console.log('sp100sp100', sp100);
@@ -172,7 +172,7 @@ sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
 
 searchParam.push(
-     sp101
+    sp100
 );
 //GreaterThanSimulator
 //GreaterThanIntegrator

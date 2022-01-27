@@ -6,6 +6,7 @@ var EqualOperation_1 = require("./EqualOperation");
 var Where_1 = require("./Where");
 var Operation_1 = require("./Operation");
 var GreaterThanComparer_1 = require("./GreaterThanComparer");
+var NotEqualOperation_1 = require("./NotEqualOperation");
 var ConditionCreator = /** @class */ (function () {
     function ConditionCreator() {
         this.count = 1;
@@ -46,6 +47,14 @@ var ConditionCreator = /** @class */ (function () {
                         var operation = new Operation_1.Operation(Operation_1.OperationFlag.EqualOperation);
                         var objEqualOption = (objParam.operation);
                         operation.getEqualOperation().equalOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                        operation.setIterationCount(_this.count++);
+                        operation.toJsonString();
+                        objWhere.addConditionalParam(operation);
+                    }
+                    if (objParam.operation instanceof NotEqualOperation_1.NotEqualOperation) {
+                        var operation = new Operation_1.Operation(Operation_1.OperationFlag.NotEqualOperation);
+                        var objEqualOption = (objParam.operation);
+                        operation.getNotEqualOperation().notEqualOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
                         operation.setIterationCount(_this.count++);
                         operation.toJsonString();
                         objWhere.addConditionalParam(operation);
