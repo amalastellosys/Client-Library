@@ -134,13 +134,13 @@ sp5.hasMultiParam = true;
 sp5.multiparams.push(sp23, sp24);
 console.log('checkedItems', checkedItems);
 console.log('sp6', sp6);
-sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination", isAndOperator);
-sp8.searchParamFrom('Shmt_Has_Chrg_at_Src', "string", "Shipment has Charge at Source");
+sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination", true);
+sp8.searchParamFrom('Shmt_Has_Chrg_at_Src', "string", "Shipment has Charge at Source", false);
 sp9.searchParamFrom('Shmt_Has_Unpaid_Invc_Dest', "string", "Shipment has Unpaid invoice at Destination", isAndOperator);
 searchMultiParam.push(sp7, sp8, sp9);
 sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
-searchParam.push(sp100);
+searchParam.push(sp10);
 //GreaterThanSimulator
 //GreaterThanIntegrator
 //greaterThanIterator 

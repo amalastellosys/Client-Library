@@ -202,8 +202,8 @@ var ConditionCreator = /** @class */ (function () {
                             objWhere.addConditionalParam(operationObj_1);
                         }
                         else if (objParam.isAndOperator == false) {
-                            var operationObj_2 = new Operation_1.Operation(Operation_1.OperationFlag.And);
-                            operationObj_2.getAnd();
+                            var operationObj_2 = new Operation_1.Operation(Operation_1.OperationFlag.Or);
+                            operationObj_2.getOr();
                             operationObj_2.setIterationCount(_this.count++);
                             operationObj_2.toJsonString();
                             objWhere.addConditionalParam(operationObj_2);

@@ -137,7 +137,7 @@ DateCreator.getDate(DateRange.Custom);
 sp24.searchParamFromTo("Custom", "datetime", new CustomDateTime(new Date()), new CustomDateTime(date1));
 
 sp101.searchParamGreaterThanComparer("firstName", "secondNAme", "double", "200");
-console.log('sp101',sp101);
+console.log('sp101', sp101);
 
 // sp14.searchParamDate("This Week", "datetime", 'This Week');
 // sp15.searchParamDate("This Month", "datetime", 'This Month');
@@ -163,8 +163,8 @@ sp5.multiparams.push(sp23, sp24);
 
 console.log('checkedItems', checkedItems);
 console.log('sp6', sp6);
-sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination", isAndOperator);
-sp8.searchParamFrom('Shmt_Has_Chrg_at_Src', "string", "Shipment has Charge at Source");
+sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination", true);
+sp8.searchParamFrom('Shmt_Has_Chrg_at_Src', "string", "Shipment has Charge at Source",false);
 sp9.searchParamFrom('Shmt_Has_Unpaid_Invc_Dest', "string", "Shipment has Unpaid invoice at Destination", isAndOperator);
 
 searchMultiParam.push(sp7, sp8, sp9);
@@ -172,7 +172,7 @@ sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
 
 searchParam.push(
-    sp100
+    sp10
 );
 //GreaterThanSimulator
 //GreaterThanIntegrator
