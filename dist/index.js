@@ -57,6 +57,7 @@ var sp23 = new SearchParam_1.SearchParam();
 var sp24 = new SearchParam_1.SearchParam();
 var sp100 = new SearchParam_1.SearchParam();
 var sp101 = new SearchParam_1.SearchParam();
+var sp102 = new SearchParam_1.SearchParam();
 sp1.searchParamCreate('source_port_id', 'string', 'Dalma Airport', SearchParam_1.SearchOperationBuilder.create(true, false, false), false);
 sp2.searchParamFrom('destination_port_id', 'string', 'Dubai Airport', isAndOperator);
 sp3.searchParamFromTo("shmt_has_income_payment", "datetime", dt1.getDateobj(), dt3.getDateobj(), isAndOperator);
@@ -137,9 +138,15 @@ console.log('sp6', sp6);
 sp7.searchParamFrom('Shmt_Has_Chrg_at_Dest', "string", "Shipment has Charge at destination", true);
 sp8.searchParamFrom('Shmt_Has_Chrg_at_Src', "string", "Shipment has Charge at Source", false);
 sp9.searchParamFrom('Shmt_Has_Unpaid_Invc_Dest', "string", "Shipment has Unpaid invoice at Destination", isAndOperator);
-searchMultiParam.push(sp7, sp8, sp9);
+var abc = [];
+abc.push(sp7, sp8, sp9);
+sp102.hasMultiParam = true;
+sp102.multiparams = abc;
+console.log('sp102', sp102);
+searchMultiParam.push(sp7, sp8, sp9, sp102);
 sp10.hasMultiParam = true;
 sp10.multiparams = searchMultiParam;
+console.log('sp10', sp10);
 searchParam.push(sp10);
 //GreaterThanSimulator
 //GreaterThanIntegrator

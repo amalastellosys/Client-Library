@@ -147,43 +147,46 @@ var ConditionCreator = /** @class */ (function () {
                         operation_2.toJsonString();
                         objWhere.addConditionalParam(operation_2);
                     }
-                    else if (objParam.hasMultiParams) {
-                        var operation_3 = new Operation_1.Operation(Operation_1.OperationFlag.In);
-                        operation_3.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
-                        // objParam.hasMultValueList.forEach(itemList => {
-                        //     operation.getIn().addValues(itemList)
-                        // });
-                        operation_3.setIterationCount(_this.count++);
-                        operation_3.toJsonString();
-                        objWhere.addConditionalParam(operation_3);
+                    else if (objParam.hasMultiParam) {
+                        // let operation = new Operation(OperationFlag.In);
+                        // operation.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
+                        // // objParam.hasMultValueList.forEach(itemList => {
+                        // //     operation.getIn().addValues(itemList)
+                        // // });
+                        // operation.setIterationCount(this.count++);
+                        // operation.toJsonString();
+                        // objWhere.addConditionalParam(operation);
+                        _this.getMultiParamCondition(objParam)._OperationList.forEach(function (operatorList) {
+                            return objWhere._OperationList.push(operatorList);
+                        });
                     }
                     else {
                         if (objSearchParam.operation instanceof EqualOperation_1.EqualOperation) {
-                            var operation_4 = new Operation_1.Operation(Operation_1.OperationFlag.EqualOperation);
+                            var operation_3 = new Operation_1.Operation(Operation_1.OperationFlag.EqualOperation);
                             var objEqualOption = (objParam.operation);
-                            operation_4.getEqualOperation().equalOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                            operation_3.getEqualOperation().equalOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                            operation_3.setIterationCount(_this.count++);
+                            operation_3.toJsonString();
+                            objWhere.addConditionalParam(operation_3);
+                        }
+                        if (objSearchParam.operation instanceof GreaterThanComparer_1.GreaterThanComparer) {
+                            var operation_4 = new Operation_1.Operation(Operation_1.OperationFlag.GreaterThanComparer);
+                            var objEqualOption = (objParam.operation);
+                            operation_4.getGreaterThan().greaterThanOperand(objParam.name, objParam.secondName, objParam.fieldValueFrom, objParam.dataType);
                             operation_4.setIterationCount(_this.count++);
                             operation_4.toJsonString();
                             objWhere.addConditionalParam(operation_4);
                         }
-                        if (objSearchParam.operation instanceof GreaterThanComparer_1.GreaterThanComparer) {
-                            var operation_5 = new Operation_1.Operation(Operation_1.OperationFlag.GreaterThanComparer);
-                            var objEqualOption = (objParam.operation);
-                            operation_5.getGreaterThan().greaterThanOperand(objParam.name, objParam.secondName, objParam.fieldValueFrom, objParam.dataType);
+                        else if (objSearchParam.operation instanceof LikeOperation_1.LikeOperation) {
+                            var operation_5 = new Operation_1.Operation(Operation_1.OperationFlag.LikeOperation);
+                            var objLikeOption = (objParam.operation);
+                            operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                            if (!operation_5.getLikeOperation().likeMode) {
+                                operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
+                            }
                             operation_5.setIterationCount(_this.count++);
                             operation_5.toJsonString();
                             objWhere.addConditionalParam(operation_5);
-                        }
-                        else if (objSearchParam.operation instanceof LikeOperation_1.LikeOperation) {
-                            var operation_6 = new Operation_1.Operation(Operation_1.OperationFlag.LikeOperation);
-                            var objLikeOption = (objParam.operation);
-                            operation_6.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
-                            if (!operation_6.getLikeOperation().likeMode) {
-                                operation_6.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
-                            }
-                            operation_6.setIterationCount(_this.count++);
-                            operation_6.toJsonString();
-                            objWhere.addConditionalParam(operation_6);
                         }
                     }
                     // if (objSearchParam.multiparams != undefined && objSearchParam.multiparams.length > 0 && objSearchParam.multiparams[objSearchParam.multiparams.length - 1] != objParam) {

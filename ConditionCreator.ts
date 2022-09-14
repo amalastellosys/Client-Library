@@ -184,18 +184,19 @@ export class ConditionCreator {
                         objWhere.addConditionalParam(operation);
                     }
 
-                    else if (objParam.hasMultiParams) {
+                    else if (objParam.hasMultiParam) {
 
-                        let operation = new Operation(OperationFlag.In);
-                        operation.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
-                        // objParam.hasMultValueList.forEach(itemList => {
-                        //     operation.getIn().addValues(itemList)
-                        // });
+                        // let operation = new Operation(OperationFlag.In);
+                        // operation.getIn().inOperand(objParam.name, objParam.dataType, objParam.hasMultValueList);
+                        // // objParam.hasMultValueList.forEach(itemList => {
+                        // //     operation.getIn().addValues(itemList)
+                        // // });
 
-                        operation.setIterationCount(this.count++);
-                        operation.toJsonString();
-                        objWhere.addConditionalParam(operation);
-
+                        // operation.setIterationCount(this.count++);
+                        // operation.toJsonString();
+                        // objWhere.addConditionalParam(operation);
+                        this.getMultiParamCondition(objParam)._OperationList.forEach(operatorList =>
+                            objWhere._OperationList.push(operatorList));
                     }
 
                     else {
