@@ -201,7 +201,7 @@ export class ConditionCreator {
 
                     else {
 
-                        if (objSearchParam.operation instanceof EqualOperation) {
+                        if (objParam.operation instanceof EqualOperation) {
 
                             let operation = new Operation(OperationFlag.EqualOperation);
                             let objEqualOption: EqualOperation = (<EqualOperation>(objParam.operation));
@@ -213,7 +213,7 @@ export class ConditionCreator {
 
                         }
 
-                        if (objSearchParam.operation instanceof GreaterThanComparer) {
+                        if (objParam.operation instanceof GreaterThanComparer) {
 
                             let operation = new Operation(OperationFlag.GreaterThanComparer);
                             let objEqualOption: GreaterThanComparer = (<GreaterThanComparer>(objParam.operation));
@@ -225,7 +225,7 @@ export class ConditionCreator {
 
                         }
 
-                        else if (objSearchParam.operation instanceof LikeOperation) {
+                        else if (objParam.operation instanceof LikeOperation) {
 
                             let operation = new Operation(OperationFlag.LikeOperation);
                             let objLikeOption: LikeOperation = (<LikeOperation>(objParam.operation));

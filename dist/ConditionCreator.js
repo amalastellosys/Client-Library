@@ -161,7 +161,7 @@ var ConditionCreator = /** @class */ (function () {
                         });
                     }
                     else {
-                        if (objSearchParam.operation instanceof EqualOperation_1.EqualOperation) {
+                        if (objParam.operation instanceof EqualOperation_1.EqualOperation) {
                             var operation_3 = new Operation_1.Operation(Operation_1.OperationFlag.EqualOperation);
                             var objEqualOption = (objParam.operation);
                             operation_3.getEqualOperation().equalOperand(objParam.name, objParam.fieldValueFrom, objParam.dataType);
@@ -169,7 +169,7 @@ var ConditionCreator = /** @class */ (function () {
                             operation_3.toJsonString();
                             objWhere.addConditionalParam(operation_3);
                         }
-                        if (objSearchParam.operation instanceof GreaterThanComparer_1.GreaterThanComparer) {
+                        if (objParam.operation instanceof GreaterThanComparer_1.GreaterThanComparer) {
                             var operation_4 = new Operation_1.Operation(Operation_1.OperationFlag.GreaterThanComparer);
                             var objEqualOption = (objParam.operation);
                             operation_4.getGreaterThan().greaterThanOperand(objParam.name, objParam.secondName, objParam.fieldValueFrom, objParam.dataType);
@@ -177,7 +177,7 @@ var ConditionCreator = /** @class */ (function () {
                             operation_4.toJsonString();
                             objWhere.addConditionalParam(operation_4);
                         }
-                        else if (objSearchParam.operation instanceof LikeOperation_1.LikeOperation) {
+                        else if (objParam.operation instanceof LikeOperation_1.LikeOperation) {
                             var operation_5 = new Operation_1.Operation(Operation_1.OperationFlag.LikeOperation);
                             var objLikeOption = (objParam.operation);
                             operation_5.getLikeOperation().likeOperation(objParam.name, objParam.fieldValueFrom, objParam.dataType);
